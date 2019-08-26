@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="fr-FR">
+
+<head>
+    <!--***** META *****-->
+    <meta charset="utf-8">
+    <meta name="description" content="Bienvenue sur le site web de Jean Forteroche, écrivain. Découvrez son nouveau roman 'Billet simple
+        pour l'Alaska', publié en ligne.">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="#" />
+    <!--***** LINK *****-->
+    <!-- Feuille de style Material Design -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <!-- Feuille de style Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Feuille de style Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Feuille de style Perso -->
+    <link rel="stylesheet" href="../style.css">
+    <!--***** TITLE *****-->
+    <title> Interface Admin | Liste commentaires </title>
+</head>
+
+<body>
+
+    <!--******** NAVBAR ********-->
+    <div id="navigation">
+        <!--Navigation Bootstrap-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="backgroundNavbar">
+            <ul class="navbar-nav nav-tabs">
+                <li class="nav-item"> <a class="nav-link" href="#"> <i class="fas fa-home"></i> Accueil du Blog</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-tabs ml-auto">
+                <li class="nav-item dropdown" id="navConnect">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" href="#"> Bienvenue <span class="pseudoNav">
+                            Pseudo </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Gestion</a>
+                        <a class="dropdown-item" href="#">Profil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"> <i class="fas fa-sign-in-alt"> Deconnexion</i> </a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+    </nav>
+    </div>
+    <!--******** INTERFACE ADMIN ********-->
+    <p class="comeBack"> Revenir à l'écran de gestion <a href="#"><i class="far fa-times-circle fa-lg"></i> </a> </p>
+    <section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
+        <h2> Liste des commentaires </h2>
+
+
+        <article id="gestionArticle">
+            <div class="row" id="ligneArticle">
+                <div class="col-md-1 offset-md-1 effetArticle">
+                    <p> Id </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> Pseudo </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> Date de création </p>
+                </div>
+                <div class="col-md-4 effetArticle text-justify">
+                    <p> Commentaires </p>
+                </div>
+                
+                <div class="col-md-1">
+                    <a href="#"><i class="far fa-eye-slash fa-2x effetIcone"></i> </a> 
+                </div>
+            </div>
+        </article>
+
+        <article id="gestionArticle">
+            <div class="row" id="ligneArticle">
+                <div class="col-md-1 offset-md-1 effetArticle">
+                    <p> 1 </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> Tib </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> 18 juin 2019 </p>
+                </div>
+                <div class="col-md-4 effetArticle text-justify">
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do
+                        eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+
+                <div class="col-md-1">
+                    <a href="#"><i class="far fa-eye-slash fa-2x effetIcone"></i> </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="signalComments" id="gestionArticle" >
+            <div class="row" id="ligneArticle">
+                <div class="col-md-1 offset-md-1 effetArticle">
+                    <p> 2 </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> Article signalé </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> 19 juin 2019 </p>
+                </div>
+                <div class="col-md-4 effetArticle text-justify">
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do
+                        eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+
+                <div class="col-md-1">
+                    <a href="#"><i class="far fa-eye-slash fa-2x effetIcone signalComments"></i> </a>
+                </div>
+            </div>
+        </article>
+        
+
+
+
+    </section>
+
+    <!--***** SCRIPT *****-->
+    <!-- Script utilisation Material Design -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('body').bootstrapMaterialDesign();
+        });
+    </script>
+    <!-- Fichier js -->
+
+</body>
+
+</html>
