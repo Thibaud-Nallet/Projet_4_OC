@@ -6,6 +6,7 @@ Bleu marine : 294664
 */
 body {
     font-family: 'Source Code Pro';
+    background-color: #294664;
 }
 
 .underline {
@@ -16,9 +17,9 @@ body {
 
 #blockPage {
     background-color: #294664;
-    background-image: url("images/train.jpg");
+    background-image: url("/Projet_4_OC/public/images/train.jpg");
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.3) 100%),
-        url("images/train.jpg");
+        url("/Projet_4_OC/public/images/train.jpg");
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -357,8 +358,10 @@ footer li a :hover {
 
 .signale {
     border-radius: 5px;
+    padding: 10px 15px;
     background-color: rgba(220, 20, 60);
     color: #e0e8ed;
+    cursor : pointer;
 }
 
 .signale:hover {
@@ -417,7 +420,6 @@ footer li a :hover {
     width: 100%;
     background-color: #e0e8ed;
     border-radius: 5px;
-
 }
 
 #inputMessage {
@@ -428,7 +430,7 @@ footer li a :hover {
     width: 140px;
     height: 40px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin: 10px 0 20px 0;
 }
 
 .submit:hover {
@@ -446,8 +448,18 @@ footer li a :hover {
     clip-path: polygon(0 0, 100% 20px, 100% 100%, 0% 100%);
 }
 
+#connect h3 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
 #buttonConnect {
     margin-top: 20px;
+    color: #18202d;
+}
+
+#buttonConnect a {
+    color: #18202d;
 }
 
 #connect p {
@@ -470,7 +482,7 @@ footer li a :hover {
     background-color: #d1b025;
     text-align: left;
     padding: 60px;
-    margin-top: 60px;
+    margin: 60px auto;
     clip-path: polygon(0% 0%, 100% 20px, 100% 100%, 0% 100%);
 }
 
@@ -479,7 +491,7 @@ footer li a :hover {
 }
 
 #infoProfil a {
-    color: #fff;
+    color: #e0e8ed;
 }
 
 /********** INTERFACE ADMIN **********/
@@ -489,6 +501,11 @@ footer li a :hover {
 
 #interfaceAdmin h2 {
     margin: 40px auto;
+    color: #e0e8ed;
+}
+
+.whiteText {
+    color: #e0e8ed;
 }
 
 #blockAdmin {
@@ -513,31 +530,39 @@ footer li a :hover {
 #blockAdmin .fas:hover {
     color: #e0e8ed;
 }
-.comeBack{ 
+
+.comeBack {
     text-align: right;
     margin: 10px 40px 0 0;
-    font-size : 11px;
+    font-size: 11px;
+    color: #e0e8ed;
 }
+
 .comeBack .far:hover {
-    color :#18202d;
+    color: #18202d;
 }
+
 /********** INTERFACE ADMIN : LISTE DES ARTICLES **********/
 #ligneArticle {
     padding: 30px 0 20px 0;
 }
-#gestionArticle{
+
+#gestionArticle {
     border: 1px solid #d1b025;
-    background-color : #e0e8ed;
-    margin : 20px auto;
+    background-color: #e0e8ed;
+    margin: 20px auto;
 }
-.signalComments{
-    color : rgba(220, 20, 60);
+
+.signalComments {
+    color: rgba(220, 20, 60);
 }
+
 .effetArticle {
     border-right: 1px solid #d1b025;
     padding-top: 5px;
 }
-.effetIcone:hover{
+
+.effetIcone:hover {
     color: #18202d;
 }
 
