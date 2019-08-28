@@ -361,7 +361,7 @@ footer li a :hover {
     padding: 10px 15px;
     background-color: rgba(220, 20, 60);
     color: #e0e8ed;
-    cursor : pointer;
+    cursor: pointer;
 }
 
 .signale:hover {
@@ -420,10 +420,11 @@ footer li a :hover {
     width: 100%;
     background-color: #e0e8ed;
     border-radius: 5px;
+    border-color: white;
 }
 
-#inputMessage {
-    margin-bottom: 10px;
+.comments {
+    color: rgba(220, 20, 60);
 }
 
 .submit {
@@ -438,6 +439,23 @@ footer li a :hover {
     background-color: #d1b025;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
+.etoileNoir{
+    color:#18202d;
+}
+.form-group{
+    margin: 0px auto 10px auto;
+}
+
+
+
+
+/*#contact-form .thank-you {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}*/
+
+
 
 /********** CONNECTION.HTML **********/
 #connect {
