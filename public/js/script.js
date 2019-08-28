@@ -2,7 +2,7 @@ $(function () {
 
     $('#contact-form').submit(function (e) {
         e.preventDefault();
-       
+        $('.comments').empty();
         var postdata = $('#contact-form').serialize();
 
         $.ajax({
@@ -12,8 +12,14 @@ $(function () {
             dataType: 'json',
             success: function (json) {
                 if (json.isSuccess) {
-                    $('#contact-form').append("<p class='thank-you'>Votre message a bien été envoyé. Merci de m'avoir contacté :)</p>");
-                    $('#contact-form')[0].reset();
+                    $("#contact-form").hide();
+                    $('#msgEnvoi').show();
+                    setTimeout(() => {
+                        $('#msgEnvoi').empty();
+                        $('#contact-form')[0].reset();
+                        $('#msgEnvoi').hide();
+                        $("#contact-form").show();
+                    }, 5000);
                 } else {
                     $('#firstname + .comments').html(json.firstnameError);
                     $('#name + .comments').html(json.nameError);

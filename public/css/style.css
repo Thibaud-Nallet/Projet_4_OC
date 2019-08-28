@@ -445,15 +445,19 @@ footer li a :hover {
 .form-group{
     margin: 0px auto 10px auto;
 }
+#msgEnvoi{
+    text-align : center;
+    border: 1px solid black;
+    display : none;
+    margin-bottom: 40px;
+}
 
-
-
-
-/*#contact-form .thank-you {
-    text-align: center;
+#msgEnvoi p {
     font-weight: bold;
+    text-transform: uppercase;
     font-size: 22px;
-}*/
+    padding : 100px 0;
+}
 
 
 

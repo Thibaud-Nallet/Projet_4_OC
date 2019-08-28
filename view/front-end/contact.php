@@ -22,8 +22,12 @@
                 <h3 class> Formulaire de contact </h3>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
+                <div id="msgEnvoi">
+                    <p> Votre message a bien été envoyé. <br/> Merci de m'avoir contacté :)</p>
+                </div>
                 <form id="contact-form" method="post" action="" role="form">
                     <div class="form-row">
                         <div class="col-md-6">
@@ -46,7 +50,7 @@
                             <input id="phone" type="tel" name="phone" class="formInput">
                             <span class="comments"></span>
                         </div>
-                        <div>
+                        <div class="col-md-12">
                             <label class="labelForm"> Objet du message (en moins de 255 caractères)
                             </label>
                             <input id="object" type="text" name="object" class="formInput">
