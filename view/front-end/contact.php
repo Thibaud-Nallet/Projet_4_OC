@@ -1,4 +1,5 @@
 <?php $title = "Contact | Blog de Jean Forteroche"; ?>
+<?php $script = "/Projet_4_OC/public/js/script.js"; ?>
 
 <?php ob_start() ?>
 
@@ -26,7 +27,7 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div id="msgEnvoi">
-                    <p> Votre message a bien été envoyé. <br/> Merci de m'avoir contacté :)</p>
+                    <p> Votre message a bien été envoyé. <br /> Merci de m'avoir contacté :)</p>
                 </div>
                 <form id="contact-form" method="post" action="" role="form">
                     <div class="form-row">

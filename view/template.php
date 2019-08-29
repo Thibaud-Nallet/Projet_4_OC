@@ -43,7 +43,7 @@
     });
 </script>
 <!-- Fichier js -->
-<script src="/Projet_4_OC/public/js/script.js"></script>
+<script src="<?= $script ?>"> </script>
 </body>
 
 </html>

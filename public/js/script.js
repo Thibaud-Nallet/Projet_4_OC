@@ -7,7 +7,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: '/Projet_4_OC/controller/contactManager.php',
+            url: '/Projet_4_OC/public/php/formulaire_contact.php',
             data: postdata,
             dataType: 'json',
             success: function (json) {
