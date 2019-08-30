@@ -1,13 +1,14 @@
+
 <?php $title = "Roman | Billet simple pour l'Alaska"; ?>
 
 <?php ob_start() ?>
 
 <!--******** FOND DE PAGE ********-->
 <div id="blockPage">
-    <?php include("../includes/nav_disconnected.php") ?>
+    <?php include("includes/nav_disconnected.php") ?>
     <!--******** HEADER ********-->
     <header>
-        <h1 class="titleBlog"> <span id="novelTitle">Billet simple pour l'Alaska</span></h1>
+        <h1 class="titleBlog"> <span id="novelTitle"> Billet simple pour l'Alaska </span></h1>
         <h2 class="titleBlog"> Les chapitres </h2>
     </header>
     <!--******** PRESENTATION DU ROMAN ********-->
@@ -30,23 +31,22 @@
     <section class="container" id="listPostBlog">
         <hr>
         <?php
-        require "../index.php";
-        $database = Database::connect();
-        $statement = $database->query("SELECT * FROM post /* LEFT JOIN categories ON items.category = categories.id */");
-        while ($article = $statement->fetch()) { ?>
+        while ($article = $req->fetch()) { ?>
         <article class="posts">
             <h3> <?= $article["title"] ?> </h3>
             <h5 class="datePublie"> Publié le <?= $article["date_creation"] ?> </h5>
             <p class="text-justify textBlog"> <?= substr($article["content"], 0, 255) . " ... " ?> </p>
             <button> <a href="post_disconnected.php?id='<?= $article['id'] ?>' " class="nav-link"> Lire la suite </a> </button>
         </article>
-        <?php }  ?>
+        <?php }
+        /*Database::disconnect();*/
+        ?>
+    </section>
 
-
-        <?php include("../includes/footer.php") ?>
+    <?php include("includes/footer.php") ?>
 
 </div>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require("../template.php"); ?>
+<?php require("includes/template.php"); ?>
