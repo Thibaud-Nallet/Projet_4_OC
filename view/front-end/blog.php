@@ -13,47 +13,37 @@
     <!--******** PRESENTATION DU ROMAN ********-->
     <section class="container" id="presentationRoman">
         <div class="row">
-            <p class="text-justify textBlog"> Retrouvez l'ensemble des chapitres qui compose le roman " Billet
-                simple
-                pour
-                l'Alaska", par ordre
-                de publication.</p>
+            <p class="text-center textBlog"> Retrouvez l'ensemble des chapitres qui compose le roman " Billet
+                simple pour l'Alaska", par ordre de publication.</p>
         </div>
         <div class="row">
-            <p class="text-justify textBlog"> <span class="resume"> Le résumé :</span> Samantha Hollis n'aurait
-                jamais cru passer une nuit de passion dans ce train avec un amant comme
-                Nick Brodie. Mais cet homme aussi fort que fruste cache un ancien policier brisé par toutes les
-                horreurs auxquelles il a dû assister. Et c'est pour retrouver un peu de paix qu'il a quitté son
-                poste à Anchorage, en Alaska. Lorsqu'il se décide à retourner au pays, Nick invite Samantha, qui
-                accepte son offre. Mais, plus que la rudesse du Grand Nord ou les tempêtes de neige, une affaire
-                de kidnapping et de meurtre va menacer d'entraîner le couple dans le chaos.</p>
+            <p class="text-center textBlog"> <span class="resume"> Le résumé : </span> <br /> 1919. <br /> Guy est une jeune policier à l’aube de sa carrière.<br />
+                Harry, son partenaire et confident, est arrivé depuis peu en Alaska. <br /> Tout bascule le jour où ils se retrouvent embarquées
+                dans une sombre affaire : le meurtre de l’infirmière Carrie A. Nelson à bord de l’express de 15h20 ...
+            </p>
         </div>
         <div class="row">
-            <p class="text-justify textBlog"> Bonne lecture !</p>
+            <p class="text-center textBlog"> A suivre ! </p>
         </div>
     </section>
     <!--******** PRESENTATION DE LA LISTE DES POSTS ********-->
     <section class="container" id="listPostBlog">
         <hr>
+        <?php
+        require "../index.php";
+        $database = Database::connect();
+        $statement = $database->query("SELECT * FROM post /* LEFT JOIN categories ON items.category = categories.id */");
+        while ($article = $statement->fetch()) { ?>
         <article class="posts">
-            <h3> Titre </h3>
-            <h5 class="datePublie"> Publié le Date de création </h5>
-            <p class="text-justify textBlog"> Texte de l'article </p>
-            <button> <a href="post_disconnected.php" class="nav-link"> Lire la suite </a> </button>
+            <h3> <?= $article["title"] ?> </h3>
+            <h5 class="datePublie"> Publié le <?= $article["date_creation"] ?> </h5>
+            <p class="text-justify textBlog"> <?= substr($article["content"], 0, 255) . " ... " ?> </p>
+            <button> <a href="post_disconnected.php?id='<?= $article['id'] ?>' " class="nav-link"> Lire la suite </a> </button>
         </article>
+        <?php }  ?>
 
-        <article class="posts">
-            <h3> Test d'un article </h3>
-            <h5 class="datePublie"> Publié le 15 aout 2019 </h4>
-                <p class="text-justify textBlog"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat ... </p>
-                <button> <a href="post_disconnected.php" class="nav-link"> Lire la suite </a> </button>
-        </article>
-    </section>
 
-    <?php include("../includes/footer.php") ?>
+        <?php include("../includes/footer.php") ?>
 
 </div>
 
