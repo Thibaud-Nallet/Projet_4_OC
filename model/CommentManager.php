@@ -1,5 +1,8 @@
 <?php
-class CommentManager
+
+require_once("model/Manager.php");
+
+class CommentManager extends Manager
 {
     //Récupère les commentaires d'un billet 
     public function getComments($postId)
@@ -25,14 +28,4 @@ class CommentManager
         return $affectedLines;
     }
     */
-
-    private function dbConnect()
-    {
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=jeanForteroche;charset=utf8', 'root', 'root');
-            return $db;
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
-    }
 }
