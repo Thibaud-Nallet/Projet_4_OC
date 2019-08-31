@@ -15,7 +15,7 @@
     <section class="container" id="presentationPost">
         <div class="row">
             <article class="post">
-                <h5 class="datePublie"> Publié le <?= $post["date_creation"]; ?> </h5>
+                <h5 class="datePublie"> Publié le <?= $post["creation_date_fr"]; ?> </h5>
                 <p class="text-justify textBlog"> <?= nl2br(htmlspecialchars($post["content"])); ?> </p>
             </article>
         </div>
@@ -31,8 +31,8 @@
         <article class="col-lg-10 offset-lg-1" id="commentsArticle">
             <div class="row">
                 <div class="col-lg-3">
-                    <p class="commentsPseudo"> <?= htmlspecialchars($comment["id_user"]); ?> </p>
-                    <p class="commentsDate"> Publié le <?= $comment["date_creation"]; ?> </p>
+                    <p class="commentsPseudo"> <?= htmlspecialchars($comment["pseudo"]); ?> </p>
+                    <p class="commentsDate"> Publié le <?= $comment["creation_date_fr"]; ?> </p>
                 </div>
                 <div class="col-lg-9">
                     <p class="commentsText text-justify"> <?= nl2br(htmlspecialchars($comment["content"])); ?> </p>
