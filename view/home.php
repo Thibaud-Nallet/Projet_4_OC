@@ -35,7 +35,7 @@
             <h3> <?= htmlspecialchars($article["title"]); ?> </h3>
             <h5 class="datePublie"> Publié le <?= $article["creation_date_fr"] ?> </h5>
             <p class="text-justify textBlog"> <?= nl2br(htmlspecialchars(substr($article["content"], 0, 255))) . " ... " ?> </p>
-            <button> <a href="c_post.php?id=<?= $article['id'] ?>" class="nav-link"> Lire la suite </a> </button>
+            <button> <a href="index.php?action=post&amp;id=<?= $article['id'] ?>" class="nav-link"> Lire la suite </a> </button>
         </article>
         <?php }
         $posts->closeCursor();
