@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <p class="commentsPseudo"> <?= htmlspecialchars($comment["pseudo"]); ?> </p>
-                    <p class="commentsDate"> Publié le <?= $comment["creation_date_fr"]; ?> </p>
+                    <p class="commentsDate"> Commenté le <?= $comment["creation_date_fr"]; ?> </p>
                 </div>
                 <div class="col-lg-9">
                     <p class="commentsText text-justify"> <?= nl2br(htmlspecialchars($comment["content"])); ?> </p>
