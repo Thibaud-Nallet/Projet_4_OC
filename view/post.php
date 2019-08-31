@@ -46,7 +46,7 @@
         </article>
         <?php } ?>
     </section>
-    
+
     <!--******** POSTER DES COMMENTAIRES ********-->
     <section class="col-lg-8 offset-lg-2" id="postComments">
         <div class="row">
@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1" id="writeComments">
                 <div class="col-lg-12 text-center">
-                    <p> <a href="connection.php">Connectez vous</a> ou <a href="inscription.php"> inscrivez vous</a> pour poster des
+                    <p> <a href="index.php?action=connection">Connectez vous</a> ou <a href="index.php?action=inscription"> inscrivez vous</a> pour poster des
                         commentaires
                     </p>
                 </div>

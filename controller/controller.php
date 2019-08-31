@@ -4,6 +4,23 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
+function welcomeHome()
+{
+    require('view/welcome.php');
+}
+
+function formContact()
+{ 
+    require('view/contact.php');
+}
+function inscription() 
+{
+    require('view/inscription.php');
+}
+function connection()
+{
+    require('view/connection.php');
+}
 function listPosts()
 {
     $postManager = new PostManager();

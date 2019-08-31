@@ -5,10 +5,10 @@
                 <h5 class="underline"> Plan du site</h5>
                 <ul>
                     <li>
-                        <a class="nav-link" href="../front-end/welcome.php"> <i class="fas fa-home"></i> Accueil</a>
+                        <a class="nav-link" href="index.php?action=welcomeHome"> <i class="fas fa-home"></i> Accueil</a>
                     </li>
-                    <li> <a class="nav-link" href="../front-end/blog.php"> <i class="fas fa-blog"></i> Blog </a></li>
-                    <li> <a class="nav-link" href="../front-end/contact.php"> <i class="far fa-address-book"></i> Contact </a></li>
+                    <li> <a class="nav-link" href="index.php?action=listPosts"> <i class="fas fa-blog"></i> Blog </a></li>
+                    <li> <a class="nav-link" href="index.php?action=formContact"> <i class="far fa-address-book"></i> Contact </a></li>
                 </ul>
             </div>
             <div class="col-lg-4">
@@ -27,7 +27,7 @@
                 <h5 class="underline"> Admin</h5>
                 <ul>
                     <li>
-                        <a class="nav-link" href="../front-end/connection.php"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
+                        <a class="nav-link" href="index.php?action=connection"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
                     </li>
                 </ul>
             </div>
