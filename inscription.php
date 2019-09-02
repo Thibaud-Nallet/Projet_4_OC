@@ -44,7 +44,7 @@ $title = "Article | Billet simple pour l'Alaska";
          <div class="col-lg-12 text-center" id="buttonConnect">
             <button class="submit" name="formInscription"> Inscription </button>
          </div>
-         <div class="col-lg-12">
+         <div class="col-lg-12 text-center">
             <p> Déjà inscrit ? </p> <a href='index.php?action=login'> Me connecter !</a>
          </div>
       </form>

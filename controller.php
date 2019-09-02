@@ -1,16 +1,38 @@
 <?php
 
-function login()
-{
-    require("connection.php");
-}
-
 function checkInput($data)
 {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
+}
+
+function login()
+{
+    require("model.php");
+
+    if (!empty($_POST)) {
+        $mailConnect = checkInput($_POST['mailConnect']);
+        $mdpConnect = checkInput($_POST['passwordConnect']);
+
+        if (!empty($mailConnect) && !empty($mdpConnect)) {
+            $userExist = checkUserDb();
+            if ($userExist == 1) {
+                $userInfo = userConnected();
+                $_SESSION['id'] = $userInfo['id'];
+                $_SESSION['pseudo'] = $userInfo['pseudo'];
+                $_SESSION['email'] = $userInfo['email'];
+                header("Location: gestionProfil.php?id=" . $_SESSION['id']);
+            } else {
+                $erreur = "Echec de l'authentification";
+            }
+        } else {
+            $erreur = "Tous les champs doivent être remplis";
+        }
+    }
+
+    require("connection.php");
 }
 
 function inscription()
@@ -53,7 +75,7 @@ function inscription()
                 } else {
                     $erreur = "Cette adresse email n'est plus disponible";
                 }
-            } 
+            }
         }
     }
     require("inscription.php");

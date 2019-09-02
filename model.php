@@ -24,4 +24,27 @@ function insertUserDb()
     return $insertMember;
 }
 
+function userConnect()
+{
+    $bdd = connectDb();
+    $reqUser = $bdd->prepare("SELECT * FROM user WHERE email = ? AND pass = ?");
+    $reqUser->execute(array($_POST["mailConnect"], $_POST["passwordConnect"]));
 
+    return $reqUser;
+}
+
+function checkUserDb() 
+{
+    $reqUser = userConnect();
+    $userExist = $reqUser->rowCount();
+
+    return $userExist;
+}
+
+function userConnected()
+{
+    $reqUser = userConnect();
+    $userInfo = $reqUser->fetch();
+
+    return $userInfo;
+}
