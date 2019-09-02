@@ -593,3 +593,7 @@ footer li a :hover {
     border: 1px solid black;
     height: 100px;
 }
+
+.error {
+    color : red;
+}
