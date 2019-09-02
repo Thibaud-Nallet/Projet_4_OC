@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*
 //Connexion BDD
 $bdd = new PDO('mysql:host=localhost;dbname=jeanForteroche;charset=utf8', 'root', 'root');
 
@@ -31,7 +31,7 @@ if (isset($_POST['formConnection'])) {
         $erreur = "Tous les champs doivent être remplis";
     }
 }
-
+*/
 ?>
 
 <?php $title = "Connexion | Blog de Jean Forteroche"; ?>
@@ -55,7 +55,7 @@ if (isset($_POST['formConnection'])) {
                 <button class="submit" name="formConnection"> Connexion </button>
             </div>
             <div class="col-lg-12">
-                <p> Pas encore inscrit ? </p> <a href="inscription.php"> Inscrivez-vous ici !</a>
+                <p> Pas encore inscrit ? </p> <a href="index.php?action=inscription"> Inscrivez-vous ici !</a>
             </div>
         </form>
         <div class="error text-center">
