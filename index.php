@@ -1,5 +1,7 @@
 <?php
-require("controller/controller.php");
+require_once("controller/controller.php");
+require_once("controller/controller_inscription.php");
+
 
 if (isset($_GET["action"])) {
     //Routeur nav_accueil & logo
@@ -20,7 +22,8 @@ if (isset($_GET["action"])) {
     }
     //Routeur post_inscrivez-vous & connexion_inscrivez-vous
     elseif($_GET["action"] == "inscription") {
-        inscription();
+        inscriptionPage();
+        verifInscription();
     }
     //Routeur nav_contact
     elseif($_GET["action"] == "formContact") {
@@ -28,8 +31,13 @@ if (isset($_GET["action"])) {
     }
     //Routeur nav_connexion & post_connexion & footer_connexion
     elseif($_GET["action"] == "connection") {
-        connection();
+        connectionPage();
     }
+    //Routeur gestion Profil après connexion ou inscription
+    elseif($_GET["action"] == "verifInscription") {
+        verifInscription();
+    }
+    
 } 
 //Entrée première fois
 else {

@@ -13,14 +13,15 @@ function formContact()
 { 
     require('view/contact.php');
 }
-function inscription() 
+function inscriptionPage() 
 {
     require('view/inscription.php');
 }
-function connection()
+function connectionPage()
 {
     require('view/connection.php');
 }
+
 function listPosts()
 {
     $postManager = new PostManager();
