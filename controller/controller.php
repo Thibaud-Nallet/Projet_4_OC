@@ -1,5 +1,7 @@
 <?php
 
+require_once("model/model.php");
+
 function checkInput($data)
 {
     $data = trim($data);
@@ -8,10 +10,31 @@ function checkInput($data)
     return $data;
 }
 
+function welcomeHome()
+{
+    
+    require('view/home.php');
+}
+
+function listPosts()
+{
+    $posts = getPosts();
+    require('view/blog.php');
+}
+
+function post() 
+{
+    $post = getPost($_GET['id']);
+    $comments = getComments($_GET['id']);
+    require('view/post.php');
+}
+
+function contact() {
+    require("view/formContact.php");
+}
+
 function login()
 {
-    require("model.php");
-
     if (!empty($_POST)) {
         $mailConnect = checkInput($_POST['mailConnect']);
         $mdpConnect = checkInput($_POST['passwordConnect']);
@@ -31,13 +54,11 @@ function login()
             $erreur = "Tous les champs doivent être remplis";
         }
     }
-    require("connection.php");
+    require("view/formConnection.php");
 }
 
 function inscription()
 {
-    require("model.php");
-
     if (!empty($_POST)) {
         $erreur = null;
         $inputPseudo = checkInput($_POST['inputPseudo']);
@@ -77,19 +98,17 @@ function inscription()
             }
         }
     }
-    require("inscription.php");
+    require("view/formInscription.php");
 }
 
 function homeProfil()
 {
-    require("model.php");
     $userInfo = viewProfil();
-    require("gestionProfil.php");
+    require("view/gestionProfil.php");
 }
 
 function editProfil()
 {
-    require("model.php");
     if (isset($_SESSION['id'])) {
         $user = checkUser();
         if (isset($_POST['input_NewPseudo']) and !empty($_POST['input_NewPseudo']) and $_POST['input_NewPseudo'] != $user['pseudo']) {
@@ -113,7 +132,7 @@ function editProfil()
             }
         }
     }
-    require("editProfil.php");
+    require("view/editProfil.php");
 }
 
 function deconnectProfil()
@@ -121,5 +140,5 @@ function deconnectProfil()
     session_start();
     $_SESSION = array();
     session_destroy();
-    header("Location: index.php?action=login");
+    header("Location: index.php?action=welcomeHome");
 }

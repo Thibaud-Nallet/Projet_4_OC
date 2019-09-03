@@ -15,7 +15,7 @@
                 <li class="nav-item"> <a class="nav-link" href="index.php?action=welcomeHome"> <i class="fas fa-home"></i> Accueil</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="index.php?action=listPosts"> <i class="fas fa-blog"></i> Blog </a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?action=formContact"> <i class="far fa-address-book"></i> Contact
+                <li class="nav-item"><a class="nav-link" href="index.php?action=contact"> <i class="far fa-address-book"></i> Contact
                     </a></li>
             </ul>
             <?php
@@ -23,7 +23,7 @@
                 ?>
                 <ul class="navbar-nav nav-tabs ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=connection"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
+                        <a class="nav-link" href="index.php?action=login"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
                     </li>
                 </ul>
             <?php
@@ -35,7 +35,8 @@
                                 <?= $_SESSION['pseudo'] ?> </span>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="index.php?action=homeProfil&id=" . $_SESSION['id']">Profil</a>
+                            <!-- <a class="dropdown-item" href=" METTRE EN PLACE POUR L'ADMIN "> Gestion </a> -->
+                            <a class="dropdown-item" href=""> Profil </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="index.php?action=deconnectProfil"> <i class="fas fa-sign-in-alt"> Deconnexion</i> </a>
                         </div>

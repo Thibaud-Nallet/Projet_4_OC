@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <?php include("includes/navigation.php"); ?>
-<p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=homeProfil&id=" . <?php echo $_SESSION['id'];?> ><i class="far fa-times-circle fa-lg"></i> </a> </p>
+<p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=homeProfil&id=" . <?php echo $_SESSION['id']; ?>><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-lg-6 offset-lg-6" id="connect">
     <h3> Editez votre profil </h3>
     <form action="" method="post" enctype="multipart/form-data">
