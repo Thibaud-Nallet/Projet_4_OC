@@ -1,24 +1,10 @@
-<?php
-session_start();
-
-//Connexion BDD
-$bdd = new PDO('mysql:host=localhost;dbname=jeanForteroche;charset=utf8', 'root', 'root');
-
-if (isset($_GET['id']) and $_GET['id'] > 0) {
-    $getId = intval($_GET['id']);
-    $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
-    $requser->execute(array($getId));
-    $userInfo = $requser->fetch();
-}
-?>
-
 <?php $title = "Profil | Blog de Jean Forteroche"; ?>
 
 <?php ob_start() ?>
 
 <!--******** FOND DE PAGE ********-->
 
-<?php /*include("includes/nav_connected_user.php") */ ?>
+<?php include("includes/nav_disconnected.php") ?>
 
 <!--******** PROFIL ********-->
 <section class="col-lg-6 offset-lg-3" id="infoProfil">
@@ -28,10 +14,11 @@ if (isset($_GET['id']) and $_GET['id'] > 0) {
     <p> Statut : <?= $userInfo['statut'] ?> </p>
 
     <?php
+    //Sécurité qu'on ne puisse editer que son profil en changeant l'url
     if (isset($_SESSION['id']) and $userInfo['id'] == $_SESSION['id']) {
         ?>
-        <p> <a href="editProfil.php"> Editer mon profil </a></p>
-        <p> <a href="deconnection.php"> Se déconnecter </a></p>
+        <p> <a href="index.php?action=editProfil"> Editer mon profil </a></p>
+        <p> <a href="index.php?action=deconnectProfil"> Se déconnecter </a></p>
     <?php
     }
     ?>

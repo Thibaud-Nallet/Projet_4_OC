@@ -23,7 +23,7 @@ function login()
                 $_SESSION['id'] = $userInfo['id'];
                 $_SESSION['pseudo'] = $userInfo['pseudo'];
                 $_SESSION['email'] = $userInfo['email'];
-                header("Location: gestionProfil.php?id=" . $_SESSION['id']);
+                header("Location: index.php?action=homeProfil&id=" . $_SESSION['id']);
             } else {
                 $erreur = "Echec de l'authentification";
             }
@@ -31,7 +31,6 @@ function login()
             $erreur = "Tous les champs doivent être remplis";
         }
     }
-
     require("connection.php");
 }
 
@@ -81,16 +80,46 @@ function inscription()
     require("inscription.php");
 }
 
-/*
-    connectDb();
-    $reqmail = $bdd->prepare("SELECT email FROM user WHERE email = ?");
-    $reqmail->execute(array($inputMail));
-    $mailexist = $reqmail->rowCount();
-    if ($mailexist == 0) {
-        if ($inputPassword == $verifInputPassword) {
-            $insertMember = $bdd->prepare("INSERT INTO user(pseudo, email, pass, date_inscription) VALUES(?, ?, ?, CURDATE())");
-            $insertMember->execute(array($inputPseudo, $inputMail, $inputPassword));
-            $erreur = "Votre compte a bien été créé !";
+function homeProfil()
+{
+    require("model.php");
+    $userInfo = viewProfil();
+    require("gestionProfil.php");
+}
+
+function editProfil()
+{
+    require("model.php");
+    if (isset($_SESSION['id'])) {
+        $user = checkUser();
+        if (isset($_POST['input_NewPseudo']) and !empty($_POST['input_NewPseudo']) and $_POST['input_NewPseudo'] != $user['pseudo']) {
+            $newPseudo = checkInput($_POST['input_NewPseudo']);
+            $insertPseudo = upPseudo();
+            header("Location: index.php?action=homeProfil&id=" . $_SESSION['id']);
+        }
+        if (isset($_POST['input_NewMail']) and !empty($_POST['input_NewMail']) and $_POST['input_NewMail'] != $user['mail']) {
+            $newMail = checkInput($_POST['input_NewMail']);
+            $insertMail = upMail();
+            header("Location: index.php?action=homeProfil&id=" . $_SESSION['id']);
+        }
+        if (isset($_POST['input_NewPassword']) and !empty($_POST['input_NewPassword']) and isset($_POST['verifInput_NewPassword']) and !empty($_POST['verifInput_NewPassword'])) {
+            $input_NewPassword = checkInput($_POST['input_NewPassword']);
+            $verifInput_NewPassword = checkInput($_POST['verifInput_NewPassword']);
+            if ($input_NewPassword == $verifInput_NewPassword) {
+                $insertPassword = upPassword();
+                header("Location: index.php?action=homeProfil&id=" . $_SESSION['id']);
+            } else {
+                $erreur = "Vos deux mdp ne correspondent pas !";
+            }
         }
     }
-}*/
+    require("editProfil.php");
+}
+
+function deconnectProfil()
+{
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    header("Location: index.php?action=login");
+}

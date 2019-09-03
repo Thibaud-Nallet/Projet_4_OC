@@ -595,5 +595,5 @@ footer li a :hover {
 }
 
 .error {
-    color : red;
+    color : rgba(220, 20, 60);
 }
