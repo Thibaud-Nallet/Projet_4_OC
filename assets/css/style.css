@@ -378,6 +378,7 @@ footer li a :hover {
 
 #writeComments,
 #writeComments p {
+    border-radius : 10px;
     background-color: #d1b025;
     margin: 10px auto;
 }

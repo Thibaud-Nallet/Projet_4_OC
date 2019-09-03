@@ -46,6 +46,11 @@ if (isset($_GET["action"])) {
     elseif ($_GET["action"] == "editProfil") {
         editProfil();
     }
+    elseif ($_GET["action"] == "newComment") {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            newComment();
+        }
+    }
 } 
 //Lancement de la page d'accueil si aucune action
 else {

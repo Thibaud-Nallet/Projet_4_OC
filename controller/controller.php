@@ -12,7 +12,7 @@ function checkInput($data)
 
 function welcomeHome()
 {
-    
+
     require('view/home.php');
 }
 
@@ -22,14 +22,15 @@ function listPosts()
     require('view/blog.php');
 }
 
-function post() 
+function post()
 {
     $post = getPost($_GET['id']);
     $comments = getComments($_GET['id']);
     require('view/post.php');
 }
 
-function contact() {
+function contact()
+{
     require("view/formContact.php");
 }
 
@@ -142,3 +143,19 @@ function deconnectProfil()
     session_destroy();
     header("Location: index.php?action=welcomeHome");
 }
+
+/*function newComment()
+{
+    if (!empty($_POST)) {
+    $affectedLines = postComment();
+    
+}
+    require('view/post.php');
+   if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+    } else {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
+   
+   
+} */

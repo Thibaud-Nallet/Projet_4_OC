@@ -24,9 +24,10 @@ function getPost($postId)
 {
     $bdd = connectDb();
     $req = $bdd->prepare(
-    'SELECT id, id_author, title, content, DATE_FORMAT(date_creation, "%d/%m/%Y à %Hh%imin%ss") AS creation_date_fr 
+        'SELECT id, id_author, title, content, DATE_FORMAT(date_creation, "%d/%m/%Y à %Hh%imin%ss") AS creation_date_fr 
     FROM post 
-    WHERE id = ?');
+    WHERE id = ?'
+    );
     $req->execute(array($postId));
     $post = $req->fetch();
 
@@ -135,3 +136,13 @@ function upPassword()
 
     return $insertPassword;
 }
+
+/*function postComment()
+{
+    $bdd = connectDb();
+    $comments = $bdd->prepare('INSERT INTO comments(content) 
+    VALUES(?');
+    $affectedLines = $comments->execute(array($_POST['textComment']));
+
+    return $affectedLines;
+}*/

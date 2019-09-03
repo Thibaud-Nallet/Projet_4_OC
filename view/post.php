@@ -20,6 +20,36 @@
             </article>
         </div>
     </section>
+    <!--******** POSTER DES COMMENTAIRES ********-->
+    <?php if (isset($_SESSION['id']) == true) { ?>
+        <section class="col-lg-8 offset-lg-2" id="postComments">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3> Laissez un commentaire </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1" id="writeComments">
+                    <div class="col-lg-12">
+                        <form id="comment-form" method="post" action="">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
+                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION["pseudo"] ?>">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="textComment" class="labelForm"> Votre commentaire <span class="etoileNoir">*</span></label>
+                                    <textarea id="textComment" name="textComment" class="formInput" rows="5"></textarea>
+                                </div>
+                                <div class="col-lg-12 text-center" id="buttonConnect">
+                                    <button class="submit" name="buttonComment"> Envoyez </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
+    <?php } ?>
     <!--******** PRESENTATION DES COMMENTAIRES ********-->
     <section class="col-lg-8 offset-lg-2" id="comments">
         <div class="col-lg-12 text-center">
@@ -47,24 +77,25 @@
         <?php } ?>
     </section>
 
-    <!--******** POSTER DES COMMENTAIRES ********-->
-    <section class="col-lg-8 offset-lg-2" id="postComments">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h3> Laisser un commentaire </h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1" id="writeComments">
+    <!--******** INSCRIPTION SI NON CONNECTE ********-->
+    <?php if (isset($_SESSION['id']) != true) { ?>
+        <section class="col-lg-8 offset-lg-2" id="postComments">
+            <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p> <a href="index.php?action=connection">Connectez vous</a> ou <a href="index.php?action=inscription"> inscrivez vous</a> pour poster des
-                        commentaires
-                    </p>
+                    <h3> Laisser un commentaire </h3>
                 </div>
-
             </div>
-        </div>
-    </section>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1" id="writeComments">
+                    <div class="col-lg-12 text-center">
+                        <p> <a href="index.php?action=login">Connectez vous</a> ou <a href="index.php?action=inscription"> inscrivez vous</a> pour poster des
+                            commentaires
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php } ?>
     <!--******** FOOTER ********-->
     <?php include("includes/footer.php") ?>
     <!--Fin div blocPage-->
