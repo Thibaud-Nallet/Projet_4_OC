@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div id="blockPage">
-    <?php include("includes/nav_disconnected.php"); ?>
+    <?php include("includes/navigation.php"); ?>
     <section class="col-lg-4 offset-lg-8" id="connect">
         <h3> Connexion </h3>
         <div class="error text-center">

@@ -8,7 +8,7 @@ $title = "Article | Billet simple pour l'Alaska";
 <!--******** FOND DE PAGE ********-->
 <div id="blockPage">
    <!--******** NAVBAR ********-->
-   <?php include("includes/nav_disconnected.php"); ?>
+   <?php include("includes/navigation.php"); ?>
 
    <section class="col-lg-6 offset-lg-6" id="connect">
       <h3> Inscrivez-vous </h3>

@@ -18,11 +18,30 @@
                 <li class="nav-item"><a class="nav-link" href="index.php?action=formContact"> <i class="far fa-address-book"></i> Contact
                     </a></li>
             </ul>
-            <ul class="navbar-nav nav-tabs ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=connection"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
-                </li>
-            </ul>
+            <?php
+            if (isset($_SESSION['id']) != true) {
+                ?>
+                <ul class="navbar-nav nav-tabs ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=connection"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
+                    </li>
+                </ul>
+            <?php
+            } else {
+                ?>
+                <ul class="navbar-nav nav-tabs ml-auto">
+                    <li class="nav-item dropdown" id="navConnect">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"> Bienvenue <span class="pseudoNav">
+                                <?= $_SESSION['pseudo'] ?> </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="index.php?action=homeProfil&id=" . $_SESSION['id']">Profil</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="index.php?action=deconnectProfil"> <i class="fas fa-sign-in-alt"> Deconnexion</i> </a>
+                        </div>
+                    </li>
+                </ul>
+            <?php } ?>
         </div>
     </nav>
 </div>

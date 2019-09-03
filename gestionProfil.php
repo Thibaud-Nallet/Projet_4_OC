@@ -4,7 +4,7 @@
 
 <!--******** FOND DE PAGE ********-->
 
-<?php include("includes/nav_disconnected.php") ?>
+<?php include("includes/navigation.php") ?>
 
 <!--******** PROFIL ********-->
 <section class="col-lg-6 offset-lg-3" id="infoProfil">
@@ -18,7 +18,6 @@
     if (isset($_SESSION['id']) and $userInfo['id'] == $_SESSION['id']) {
         ?>
         <p> <a href="index.php?action=editProfil"> Editer mon profil </a></p>
-        <p> <a href="index.php?action=deconnectProfil"> Se déconnecter </a></p>
     <?php
     }
     ?>
