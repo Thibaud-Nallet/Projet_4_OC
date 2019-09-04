@@ -31,7 +31,12 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1" id="writeComments">
                     <div class="col-lg-12">
-                        <form id="comment-form" method="post" action="">
+                        <form method="post" action="">
+                            <?php
+                                if (isset($erreur)) {
+                                    echo $erreur;
+                                }
+                                ?>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
@@ -42,7 +47,7 @@
                                     <textarea id="textComment" name="textComment" class="formInput" rows="5"></textarea>
                                 </div>
                                 <div class="col-lg-12 text-center" id="buttonConnect">
-                                    <button class="submit" name="buttonComment"> Envoyez </button>
+                                    <button class="submit" name="formComment"> Envoyez </button>
                                 </div>
                             </div>
                         </form>

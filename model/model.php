@@ -58,7 +58,7 @@ function verifMailDb()
 function insertUserDb()
 {
     $bdd = connectDb();
-    $insertMember = $bdd->prepare("INSERT INTO user(pseudo, email, pass, date_inscription) VALUES(?, ?, ?, CURDATE())");
+    $insertMember = $bdd->prepare("INSERT INTO user(pseudo, email, pass, date_inscription) VALUES(?, ?, ?, NOW())");
     $insertMember->execute(array($_POST["inputPseudo"], $_POST["inputMail"], $_POST["inputPassword"]));
 
     return $insertMember;
@@ -137,12 +137,12 @@ function upPassword()
     return $insertPassword;
 }
 
-/*function postComment()
+function postComment($postId)
 {
     $bdd = connectDb();
-    $comments = $bdd->prepare('INSERT INTO comments(content) 
-    VALUES(?');
-    $affectedLines = $comments->execute(array($_POST['textComment']));
+    $comments = $bdd->prepare('INSERT INTO comments(content, id_user, id_post, date_creation) 
+    VALUES(?, ?, ?, NOW())');
+    $comment = $comments->execute(array($_POST['textComment'], $_SESSION['id'], $postId));
 
-    return $affectedLines;
-}*/
+    return $comment;
+}

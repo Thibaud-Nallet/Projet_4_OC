@@ -144,18 +144,18 @@ function deconnectProfil()
     header("Location: index.php?action=welcomeHome");
 }
 
-/*function newComment()
+function newComment()
 {
     if (!empty($_POST)) {
-    $affectedLines = postComment();
-    
-}
-    require('view/post.php');
-   if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    } else {
-        header('Location: index.php?action=post&id=' . $postId);
+        $erreur = null;
+        $pseudoComment = checkInput($_POST['pseudoComment']);
+        $textComment = checkInput($_POST['textComment']);
+        if(empty($_POST['pseudoComment']) || empty($_POST['textComment'])) {
+            $erreur = "Tous les champs doivent être complétés !";
+        } else {
+            $comment = postComment($_GET['id']);
+            $erreur = "Votre commentaire a bien été créé !";
+        }
     }
-   
-   
-} */
+
+}
