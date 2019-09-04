@@ -51,15 +51,15 @@ class FrontEndController
 
             if (!empty($mailConnect) && !empty($mdpConnect)) {
                 $req = new FrontEndManager;
-                $userExist = $req->checkUserDb();
+                $userExist = $req->checkUserDb($_POST["mailConnect"], $_POST["passwordConnect"]);
                 if ($userExist == 1) {
-                    $userInfo = $req->userConnected();
+                    $userInfo = $req->userConnected($_POST["mailConnect"], $_POST["passwordConnect"]);
                     $_SESSION['userId'] = $userInfo['id'];
                     $_SESSION['pseudo'] = $userInfo['pseudo'];
                     $_SESSION['email'] = $userInfo['email'];
                     $_SESSION['statut'] = $userInfo['statut'];
                     if ($_SESSION['statut'] == "admin") {
-                        header("Location: index.php?action=homeProfilAdmin&id=" . $_SESSION['userId']);
+                        header("Location: index.php?action=homeProfilAdmin");
                     } else {
                         header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
                     }
@@ -109,9 +109,9 @@ class FrontEndController
                 //Verifie si le email existe déjà dans la bdd
                 if (filter_var($inputMail, FILTER_VALIDATE_EMAIL)) {
                     $req = new FrontEndManager;
-                    $mailexist = $req->verifMailDb();
+                    $mailexist = $req->verifMailDb($_POST["inputMail"]);
                     if ($mailexist == 0) {
-                        $insertMember = $req->insertUserDb();
+                        $insertMember = $req->insertUserDb($_POST["inputPseudo"], $_POST["inputMail"], $_POST["inputPassword"]);
                         $erreur = "Votre compte a bien été créé !";
                         // redirection vers la page de connexion
                         header('Location: index.php?action=login');
@@ -128,7 +128,7 @@ class FrontEndController
     {
         $req = new FrontEndManager;
         $userInfo = $req->viewProfil();
-        require("view/gestionProfil.php");
+        require("view/homeProfil.php");
     }
 
     public function editProfil()
@@ -136,22 +136,22 @@ class FrontEndController
         if (isset($_SESSION['userId'])) {
             $check = new FrontEndController;
             $req = new FrontEndManager;
-            $user = $req->checkUser();
+            $user = $req->checkUser($_SESSION['userId']);
             if (isset($_POST['input_NewPseudo']) and !empty($_POST['input_NewPseudo']) and $_POST['input_NewPseudo'] != $user['pseudo']) {
                 $newPseudo = $check->checkInput($_POST['input_NewPseudo']);
-                $insertPseudo = $req->upPseudo();
+                $insertPseudo = $req->upPseudo($_POST['input_NewPseudo'], $_SESSION['userId']);
                 header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
             }
             if (isset($_POST['input_NewMail']) and !empty($_POST['input_NewMail']) and $_POST['input_NewMail'] != $user['mail']) {
                 $newMail = $check->checkInput($_POST['input_NewMail']);
-                $insertMail = $req->upMail();
+                $insertMail = $req->upMail($_POST['input_NewMail'], $_SESSION['userId']);
                 header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
             }
             if (isset($_POST['input_NewPassword']) and !empty($_POST['input_NewPassword']) and isset($_POST['verifInput_NewPassword']) and !empty($_POST['verifInput_NewPassword'])) {
                 $input_NewPassword = $check->checkInput($_POST['input_NewPassword']);
                 $verifInput_NewPassword = $check->checkInput($_POST['verifInput_NewPassword']);
                 if ($input_NewPassword == $verifInput_NewPassword) {
-                    $insertPassword = $req->upPassword();
+                    $insertPassword = $req->upPassword($_POST['input_NewPassword'], $_SESSION['userId']);
                     header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
                 } else {
                     $erreur = "Vos deux mdp ne correspondent pas !";

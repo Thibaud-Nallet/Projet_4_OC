@@ -4,12 +4,13 @@ require("model/BackEndManager.php");
 
 class BackEndController
 {
-    public function homeProfilAdmin() {
+    public function homeProfilAdmin()
+    {
         require("view/homeAdmin.php");
     }
 
     public function comeBackProfilAdmin()
     {
-        header("Location: index.php?action=homeProfilAdmin&id=" . $_SESSION['userId']);
+        header("Location: index.php?action=homeProfilAdmin");
     }
 }

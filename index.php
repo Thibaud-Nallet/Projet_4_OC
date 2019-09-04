@@ -42,13 +42,11 @@ if (isset($_GET["action"])) {
             $frontEnd->homeProfil();
         }
     } elseif ($_GET["action"] == "homeProfilAdmin") {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (isset($_SESSION['userId']) && $_SESSION['userId'] > 0 && $_SESSION['statut'] == "admin") {
             $backEnd->homeProfilAdmin();
         }
     } elseif ($_GET["action"] == "comeBackProfilAdmin") {
-        
             $backEnd->comeBackProfilAdmin();
-        
     }
     //Routeur deconnection du profil
     elseif ($_GET["action"] == "deconnectProfil") {

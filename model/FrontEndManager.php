@@ -39,47 +39,47 @@ class FrontEndManager extends Manager {
         return $comments;
     }
 
-    public function verifMailDb()
+    public function verifMailDb($inputMail)
     {
         $bdd = $this->dbConnect();
         $reqmail = $bdd->prepare("SELECT email FROM user WHERE email = ?");
-        $reqmail->execute(array($_POST["inputMail"]));
+        $reqmail->execute(array($inputMail));
         $mailexist = $reqmail->rowCount();
 
         return $mailexist;
     }
 
-    public function insertUserDb()
+    public function insertUserDb($inputPseudo, $inputMail, $inputPassword)
     {
         $bdd = $this->dbConnect();
         $insertMember = $bdd->prepare("INSERT INTO user(pseudo, email, pass, date_inscription) VALUES(?, ?, ?, NOW())");
-        $insertMember->execute(array($_POST["inputPseudo"], $_POST["inputMail"], $_POST["inputPassword"]));
+        $insertMember->execute(array($inputPseudo, $inputMail, $inputPassword));
 
         return $insertMember;
     }
 
-    public function userConnect()
+    public function userConnect($mailConnect, $passwordConnect)
     {
         $bdd = $this->dbConnect();
         $reqUser = $bdd->prepare("SELECT * FROM user WHERE email = ? AND pass = ?");
-        $reqUser->execute(array($_POST["mailConnect"], $_POST["passwordConnect"]));
+        $reqUser->execute(array($mailConnect, $passwordConnect));
 
         return $reqUser;
     }
 
-    public function checkUserDb()
+    public function checkUserDb($mailConnect, $passwordConnect)
     {
         $reqUserManager = new FrontEndManager;
-        $reqUser = $reqUserManager->userConnect();
+        $reqUser = $reqUserManager->userConnect($mailConnect, $passwordConnect);
         $userExist = $reqUser->rowCount();
 
         return $userExist;
     }
 
-    public function userConnected()
+    public function userConnected($mailConnect, $passwordConnect)
     {
         $reqUserManager = new FrontEndManager;
-        $reqUser = $reqUserManager->userConnect();
+        $reqUser = $reqUserManager->userConnect($mailConnect, $passwordConnect);
         $userInfo = $reqUser->fetch();
 
         return $userInfo;
@@ -96,39 +96,39 @@ class FrontEndManager extends Manager {
         return $userInfo;
     }
 
-    public function checkUser()
+    public function checkUser($userId)
     {
         $bdd = $this->dbConnect();
         $requser = $bdd->prepare("SELECT * FROM user WHERE id = ?");
-        $requser->execute(array($_SESSION['userId']));
+        $requser->execute(array($userId));
         $user = $requser->fetch();
 
         return $user;
     }
 
-    public function upPseudo()
+    public function upPseudo($input_NewPseudo, $id)
     {
         $bdd = $this->dbConnect();
         $insertPseudo = $bdd->prepare("UPDATE user SET pseudo = ? WHERE id = ?");
-        $insertPseudo->execute(array($_POST['input_NewPseudo'], $_SESSION['id']));
+        $insertPseudo->execute(array($input_NewPseudo, $id));
 
         return $insertPseudo;
     }
 
-    public function upMail()
+    public function upMail($input_NewMail, $id)
     {
         $bdd = $this->dbConnect();
         $insertMail = $bdd->prepare("UPDATE user SET email = ? WHERE id = ?");
-        $insertMail->execute(array($_POST['input_NewMail'], $_SESSION['id']));
+        $insertMail->execute(array($input_NewMail, $id));
 
         return $insertMail;
     }
 
-    public function upPassword()
+    public function upPassword($input_NewPassword, $id)
     {
         $bdd = $this->dbConnect();
         $insertPassword = $bdd->prepare("UPDATE user SET pass = ? WHERE id = ?");
-        $insertPassword->execute(array($_POST['input_NewPassword'], $_SESSION['id']));
+        $insertPassword->execute(array($input_NewPassword, $id));
 
         return $insertPassword;
     }

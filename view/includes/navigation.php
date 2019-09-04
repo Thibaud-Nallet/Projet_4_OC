@@ -36,7 +36,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <?php
-                                if (isset($_SESSION['statut']) == "admin") {
+                                if ($_SESSION['statut'] == "admin") {
                                     ?>
                                 <a class="dropdown-item" href="index.php?action=comeBackProfilAdmin"> Gestion </a>
                             <?php } ?>
