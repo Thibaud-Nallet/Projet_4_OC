@@ -21,7 +21,7 @@
         </div>
     </section>
     <!--******** POSTER DES COMMENTAIRES ********-->
-    <?php if (isset($_SESSION['id']) == true) { ?>
+    <?php if (isset($_SESSION['userId']) == true) { ?>
         <section class="col-lg-8 offset-lg-2" id="postComments">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -31,7 +31,8 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1" id="writeComments">
                     <div class="col-lg-12">
-                        <form method="post" action="">
+                        <form method="post" action="" id="formComment">
+                            <!-- index.php?action=newComment -->
                             <?php
                                 if (isset($erreur)) {
                                     echo $erreur;
@@ -40,14 +41,14 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
-                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION["pseudo"] ?>">
+                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION['idPost'] ?>">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="textComment" class="labelForm"> Votre commentaire <span class="etoileNoir">*</span></label>
                                     <textarea id="textComment" name="textComment" class="formInput" rows="5"></textarea>
                                 </div>
                                 <div class="col-lg-12 text-center" id="buttonConnect">
-                                    <button class="submit" name="formComment"> Envoyez </button>
+                                    <button class="submit" name="formComment" href="#formComment"> Envoyez </button>
                                 </div>
                             </div>
                         </form>

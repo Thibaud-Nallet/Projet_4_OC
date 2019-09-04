@@ -15,7 +15,7 @@
 
     <?php
     //Sécurité qu'on ne puisse editer que son profil en changeant l'url
-    if (isset($_SESSION['id']) and $userInfo['id'] == $_SESSION['id']) {
+    if (isset($_SESSION['userId']) and $userInfo['id'] == $_SESSION['userId']) {
         ?>
         <p> <a href="index.php?action=editProfil"> Editer mon profil </a></p>
     <?php

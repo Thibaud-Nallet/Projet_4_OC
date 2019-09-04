@@ -19,7 +19,7 @@
                     </a></li>
             </ul>
             <?php
-            if (isset($_SESSION['id']) != true) {
+            if (isset($_SESSION['userId']) != true) {
                 ?>
                 <ul class="navbar-nav nav-tabs ml-auto">
                     <li class="nav-item">
@@ -36,7 +36,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <!-- <a class="dropdown-item" href=" METTRE EN PLACE POUR L'ADMIN "> Gestion </a> -->
-                            <a class="dropdown-item" href='index.php?action=homeProfil&amp;id=<?php $_SESSION['id']?>'> Profil </a>
+                            <a class="dropdown-item" href='index.php?action=comeBackProfil'> Profil </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="index.php?action=deconnectProfil"> <i class="fas fa-sign-in-alt"> Deconnexion</i> </a>
                         </div>

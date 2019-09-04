@@ -104,7 +104,7 @@ function checkUser()
 {
     $bdd = connectDb();
     $requser = $bdd->prepare("SELECT * FROM user WHERE id = ?");
-    $requser->execute(array($_SESSION['id']));
+    $requser->execute(array($_SESSION['userId']));
     $user = $requser->fetch();
 
     return $user;
@@ -137,12 +137,12 @@ function upPassword()
     return $insertPassword;
 }
 
-function postComment($postId)
+function postComment($content, $id, $postId)
 {
     $bdd = connectDb();
     $comments = $bdd->prepare('INSERT INTO comments(content, id_user, id_post, date_creation) 
     VALUES(?, ?, ?, NOW())');
-    $comment = $comments->execute(array($_POST['textComment'], $_SESSION['id'], $postId));
+    $comment = $comments->execute(array($content, $id, $postId));
 
     return $comment;
 }
