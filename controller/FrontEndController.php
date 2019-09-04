@@ -57,7 +57,12 @@ class FrontEndController
                     $_SESSION['userId'] = $userInfo['id'];
                     $_SESSION['pseudo'] = $userInfo['pseudo'];
                     $_SESSION['email'] = $userInfo['email'];
-                    header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
+                    $_SESSION['statut'] = $userInfo['statut'];
+                    if ($_SESSION['statut'] == "admin") {
+                        header("Location: index.php?action=homeProfilAdmin&id=" . $_SESSION['userId']);
+                    } else {
+                        header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
+                    }
                 } else {
                     $erreur = "Echec de l'authentification";
                 }

@@ -35,7 +35,11 @@
                                 <?= $_SESSION['pseudo'] ?> </span>
                         </a>
                         <div class="dropdown-menu">
-                            <!-- <a class="dropdown-item" href=" METTRE EN PLACE POUR L'ADMIN "> Gestion </a> -->
+                            <?php
+                                if (isset($_SESSION['statut']) == "admin") {
+                                    ?>
+                                <a class="dropdown-item" href="index.php?action=comeBackProfilAdmin"> Gestion </a>
+                            <?php } ?>
                             <a class="dropdown-item" href='index.php?action=comeBackProfil'> Profil </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="index.php?action=deconnectProfil"> <i class="fas fa-sign-in-alt"> Deconnexion</i> </a>

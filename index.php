@@ -2,8 +2,10 @@
 session_start();
 
 require("controller/FrontEndController.php");
+require("controller/BackEndController.php");
 
 $frontEnd = new FrontEndController;
+$backEnd = new BackEndController;
 
 if (isset($_GET["action"])) {
     //Routeur nav_accueil & logo
@@ -29,33 +31,40 @@ if (isset($_GET["action"])) {
     //Routeur form_inscription
     elseif ($_GET["action"] == "inscription") {
         $frontEnd->inscription();
-    } 
+    }
     //Routeur form_connection
     elseif ($_GET["action"] == "login") {
         $frontEnd->login();
-    } 
+    }
     //Routeur gestionProfil
     elseif ($_GET["action"] == "homeProfil") {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $frontEnd->homeProfil();
         }
-    } 
+    } elseif ($_GET["action"] == "homeProfilAdmin") {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $backEnd->homeProfilAdmin();
+        }
+    } elseif ($_GET["action"] == "comeBackProfilAdmin") {
+        
+            $backEnd->comeBackProfilAdmin();
+        
+    }
     //Routeur deconnection du profil
     elseif ($_GET["action"] == "deconnectProfil") {
         $frontEnd->deconnectProfil();
-    } 
+    }
     //Routeur edition du profil
     elseif ($_GET["action"] == "editProfil") {
         $frontEnd->editProfil();
-    }
-    elseif ($_GET["action"] == "newComment") {
+    } elseif ($_GET["action"] == "newComment") {
         //if (isset($_GET['id']) && $_GET['id'] > 0) {
         $frontEnd->newComment();
-         //}
+        //}
     } elseif ($_GET["action"] == "comeBackProfil") {
         $frontEnd->comeBackProfil();
     }
-} 
+}
 //Lancement de la page d'accueil si aucune action
 else {
     $frontEnd->welcomeHome();
