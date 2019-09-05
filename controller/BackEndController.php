@@ -29,8 +29,30 @@ class BackEndController
 
     public function listCommentsAdmin() {
         $req = new BackEndManager;
-        $pseudoCommentAdmin = $req->getCommentsAdmin();
+
+        $messagesParPage = 5;
+        $total = $req->totalComment(); //Donne le nombre total de commentaires : soit 13
+
+        $nombreDePages = ceil($total / $messagesParPage); //Donne le nombre de pages à créer : soit 3 
+
+        if (isset($_GET['page'])) // Si la variable $_GET['page'] existe...
+        {
+            $pageActuelle = intval($_GET['page']);
+
+            if ($pageActuelle > $nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
+            {
+                $pageActuelle = $nombreDePages;
+            }
+        } else // Sinon
+        {
+            $pageActuelle = 1; // La page actuelle est la n°1    
+        }
+        $premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
+
+        //$retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);
+        $pseudoCommentAdmin = $req->getCommentsAdmin($premiereEntree, $messagesParPage);
         $titleCommentAdmin = $req->regetCommentsAdmin();
+
         require("view/listCommentsAdmin.php");
     }
 }

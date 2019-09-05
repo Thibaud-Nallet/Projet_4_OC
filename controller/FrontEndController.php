@@ -189,6 +189,7 @@ class FrontEndController
     public function error() {
         //$_SESSION = array();
         //session_destroy();
+        $_GET["action"] = "error";
         require("view/error.php");
     }
 }

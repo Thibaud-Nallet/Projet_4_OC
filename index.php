@@ -21,6 +21,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $frontEnd->post();
             } else {
+                $_GET["action"] = "error";
                 throw new Exception("Erreur : cette page n'existe pas");
             }
         }
@@ -74,10 +75,13 @@ try {
         } elseif ($_GET["action"] == "writePostAdmin") {
             $backEnd->writePostAdmin();
         } elseif ($_GET["action"] == "listCommentsAdmin") {
-            $backEnd->listCommentsAdmin();
+            if(isset($_GET['page']) && $_GET['page'] > 0) {
+                $backEnd->listCommentsAdmin();
+            } else {
+                throw new Exception("Erreur : cette page n'existe pas");
+            }
         } else {
             throw new Exception("Erreur : cette page n'existe pas");
-            $frontEnd->error();
         }
         
     }

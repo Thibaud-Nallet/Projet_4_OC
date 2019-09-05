@@ -2,9 +2,6 @@
 
 <?php ob_start(); ?>
 
-
-
-
 <!--******** FOND DE PAGE ********-->
 <div id="blockPage">
     <!--******** NAVBAR ********-->
@@ -20,7 +17,7 @@
                     <p> La page que vous souhaitez voir n'existe pas.<br />
                     </p>
                     <div class="col-lg-12 text-center" id="buttonConnect">
-                        <button class="submit"> <a href="index.php?action=welcomeHome" title="Revenir à l'accueil"></a> ACCUEIL </button>
+                        <input type="button" class="submit" value="ACCUEIL"> <a href="index.php?action=welcomeHome"></a> 
                     </div>
                 </div>
             </div>

@@ -13,13 +13,15 @@ class BackEndManager extends Manager
         return $postsAdmin;
     }
 
-    public function getCommentsAdmin()
+    public function getCommentsAdmin($premiereEntree, $messagesParPage)
     {
         $bdd = $this->dbConnect();
-        $pseudoCommentAdmin = $bdd->query('SELECT pseudo, comments.id, id_user, DATE_FORMAT(date_creation, "%d/%m/%Y") AS creation_date_fr, content, id_post
+        $pseudoCommentAdmin = $bdd->query(
+            'SELECT pseudo, comments.id, id_user, DATE_FORMAT(date_creation, "%d/%m/%Y") AS creation_date_fr, content, id_post
         FROM comments
         INNER JOIN user ON user.id = comments.id_user
-        ORDER BY date_creation DESC');
+        ORDER BY date_creation DESC
+        LIMIT ' . $premiereEntree . ', ' . $messagesParPage . '');
 
         return $pseudoCommentAdmin;
     }
@@ -32,4 +34,24 @@ class BackEndManager extends Manager
 
         return $titleCommentAdmin;
     }
+
+    public function totalComment() {
+        $bdd = $this->dbConnect();
+        $retour_total = $bdd->query('SELECT COUNT(*) AS total FROM comments');//Nous récupérons le contenu de la requête dans $retour_total
+        $donnees_total = $retour_total->fetch();
+        $total = $donnees_total['total'];
+
+        return $total;
+    }
+
+    public function retourMessages($premiereEntree, $messagesParPage) {
+        $bdd = $this->dbConnect();
+        $retour_messages = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT ' . $premiereEntree . ', ' . $messagesParPage . '');
+        
+        return $retour_messages;
+    }
+   
+  
+
+
 }

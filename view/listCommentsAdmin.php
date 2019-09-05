@@ -13,7 +13,7 @@
     <article id="gestionArticle">
         <div class="row" id="ligneArticle">
             <div class="col-md-1 offset-md-1 effetArticle">
-                <p> Id </p>
+                <p> <?= $nombreDePages ?> Id </p>
             </div>
             <div class="col-md-2 effetArticle">
                 <p> Pseudo </p>
@@ -31,8 +31,7 @@
     </article>
 
     <?php
-    while ($comments = $pseudoCommentAdmin->fetch() and $comment = $titleCommentAdmin->fetch()) {
-        ?>
+    while ($comments = $pseudoCommentAdmin->fetch() and $comment = $titleCommentAdmin->fetch()) { ?>
         <article id="gestionArticle">
             <div class="row" id="ligneArticle">
                 <div class="col-md-1 offset-md-1 effetArticle">
@@ -53,6 +52,23 @@
             </div>
         </article>
     <?php } ?>
+    <div class="row pagination">
+        <div class="col-lg-12">
+            <p> Page :
+                <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
+                {
+                    //On va faire notre condition
+                    if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
+                    { ?>
+                         [  <?= $i ?>  ]
+                    <?php } else //Sinon...
+                        { ?>
+                        <a href="index.php?action=listCommentsAdmin&page=<?= $i ?>"> <span class="crochet"> <?= $i ?> </span></a>
+                <?php }
+                } ?>
+            </p>
+        </div>
+    </div>
     <!--
     <article class="signalComments" id="gestionArticle">
         <div class="row" id="ligneArticle">

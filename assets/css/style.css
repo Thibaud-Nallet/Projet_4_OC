@@ -605,3 +605,14 @@ footer li a :hover {
     padding : 100px 0; 
 }
 
+.pagination {
+    color: #e0e8ed;
+}
+
+.crochet{
+    color : #d1b025;
+}
+
+.crochet:hover{
+    color : #e0e8ed;
+}
