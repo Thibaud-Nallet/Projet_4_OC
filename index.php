@@ -61,7 +61,14 @@ if (isset($_GET["action"])) {
         //}
     } elseif ($_GET["action"] == "comeBackProfil") {
         $frontEnd->comeBackProfil();
+    } elseif ($_GET["action"] == "listPostAdmin") {
+        $backEnd->listPostAdmin();
+    } elseif ($_GET["action"] == "writePostAdmin") {
+        $backEnd->writePostAdmin();
+    } elseif ($_GET["action"] == "listCommentsAdmin") {
+        $backEnd->listCommentsAdmin();
     }
+    
 }
 //Lancement de la page d'accueil si aucune action
 else {
