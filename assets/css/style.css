@@ -217,7 +217,7 @@ header h1 {
 footer {
     background-color: #e0e8ed;
     margin-top: 40px;
-    height: 230px;
+   
 }
 
 footer h5 {
@@ -599,5 +599,9 @@ footer li a :hover {
 
 .error {
     color: rgba(220, 20, 60);
+}
+
+#error_header {
+    padding : 100px 0; 
 }
 

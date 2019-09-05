@@ -185,4 +185,10 @@ class FrontEndController
         }
         header("Location: index.php?action=post&id=" . $_POST['idPost'] . "&erreur=" . $erreur . "#postComments");
     }
+
+    public function error() {
+        //$_SESSION = array();
+        //session_destroy();
+        require("view/error.php");
+    }
 }
