@@ -2,8 +2,11 @@
 
 require("model/BackEndManager.php");
 
+
+
 class BackEndController
 {
+    
     public function homeProfilAdmin()
     {
         require("view/homeAdmin.php");
@@ -15,6 +18,8 @@ class BackEndController
     }
 
     public function listPostAdmin(){
+        $req = new BackEndManager;
+        $postsAdmin = $req->getPostsAdmin();
         require("view/listPostAdmin.php");
     }
 
@@ -23,6 +28,9 @@ class BackEndController
     }
 
     public function listCommentsAdmin() {
+        $req = new BackEndManager;
+        $pseudoCommentAdmin = $req->getCommentsAdmin();
+        $titleCommentAdmin = $req->regetCommentsAdmin();
         require("view/listCommentsAdmin.php");
     }
 }

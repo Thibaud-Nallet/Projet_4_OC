@@ -4,7 +4,7 @@
 
 <?php include("includes/navigation.php"); ?>
 <!--******** INTERFACE ADMIN ********-->
-<p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=homeProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
+<p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
     <h2> Liste des articles </h2>
 
@@ -24,36 +24,42 @@
                 <p> Date de création </p>
             </div>
             <div class="col-md-1">
-                <a href="editPost.php"><i class="far fa-edit fa-2x effetIcone"></i> </a>
+                <p> Editer </p>
             </div>
             <div class="col-md-1">
-                <a href="#"><i class="far fa-trash-alt fa-2x effetIcone"></i> </a>
+                <p> Supprimer </p>
             </div>
         </div>
     </article>
 
-    <article id="gestionArticle">
-        <div class="row" id="ligneArticle">
-            <div class="col-md-1 offset-md-1 effetArticle">
-                <p> 1 </p>
+
+    <?php
+    while ($article = $postsAdmin->fetch()) { ?>
+        <article id="gestionArticle">
+            <div class="row" id="ligneArticle">
+                <div class="col-md-1 offset-md-1 effetArticle">
+                    <p> <?= htmlspecialchars($article["id"]); ?> </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> <?= htmlspecialchars($article["pseudo"]); ?> </p>
+                </div>
+                <div class="col-md-3 effetArticle">
+                    <p> <?= htmlspecialchars($article["title"]); ?> </p>
+                </div>
+                <div class="col-md-2 effetArticle">
+                    <p> <?= htmlspecialchars($article["creation_date_fr"]); ?> </p>
+                </div>
+                <div class="col-md-1">
+                    <a href="editPost.php"><i class="far fa-edit fa-2x effetIcone"></i> </a>
+                </div>
+                <div class="col-md-1">
+                    <a href="#"><i class="far fa-trash-alt fa-2x effetIcone"></i> </a>
+                </div>
             </div>
-            <div class="col-md-2 effetArticle">
-                <p> Jean </p>
-            </div>
-            <div class="col-md-3 effetArticle">
-                <p> Test </p>
-            </div>
-            <div class="col-md-2 effetArticle">
-                <p> 18 aout 2019 </p>
-            </div>
-            <div class="col-md-1">
-                <a href="editPost.php"><i class="far fa-edit fa-2x effetIcone"></i> </a>
-            </div>
-            <div class="col-md-1">
-                <a href="#"><i class="far fa-trash-alt fa-2x effetIcone"></i> </a>
-            </div>
-        </div>
-    </article>
+        </article>
+    <?php }
+    $postsAdmin->closeCursor();
+    ?>
 </section>
 <?php $content = ob_get_clean(); ?>
 

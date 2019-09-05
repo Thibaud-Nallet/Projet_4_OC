@@ -16,7 +16,7 @@
         <div class="row">
             <article class="post">
                 <h5 class="datePublie"> Publié le <?= $post["creation_date_fr"]; ?> </h5>
-                <p class="text-justify textBlog"> <?= nl2br(htmlspecialchars($post["content"])); ?> </p>
+                <p class="text-justify textBlog"> <?= $post["content"]; ?> </p>
             </article>
         </div>
     </section>
@@ -31,21 +31,33 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1" id="writeComments">
                     <div class="col-lg-12">
-                        <form method="post" action="" id="formComment">
-                            <!-- index.php?action=newComment -->
-                            <?php
-                                if (isset($erreur)) {
-                                    echo $erreur;
-                                }
-                                ?>
+                        <form method="post" action="index.php?action=newComment" id="formComment">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
-                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION['idPost'] ?>">
+                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION['pseudo'] ?>">
+                                </div>
+                                <div class="col-md-6" style="visibility:hidden;">
+                                    <label for="idPost" class="labelForm"> Id du post </label>
+                                    <input id="idPost" type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="textComment" class="labelForm"> Votre commentaire <span class="etoileNoir">*</span></label>
                                     <textarea id="textComment" name="textComment" class="formInput" rows="5"></textarea>
+                                </div>
+                                <div class="error col-md-12 text-center">
+                                    <?php
+                                        if (isset($_GET["erreur"])) {
+                                            if ($_GET["erreur"] == "code1") {
+                                                echo "Tous les champs doivent être complétés";
+                                            } elseif ($_GET["erreur"] == "code0") {
+                                                echo "Votre commentaire a bien été créé !";
+                                            } else {
+                                                echo "Touche pas à mon URL";
+                                            }
+                                        }
+
+                                        ?>
                                 </div>
                                 <div class="col-lg-12 text-center" id="buttonConnect">
                                     <button class="submit" name="formComment" href="#formComment"> Envoyez </button>
@@ -71,7 +83,7 @@
                         <p class="commentsDate"> Commenté le <?= $comment["creation_date_fr"]; ?> </p>
                     </div>
                     <div class="col-lg-9">
-                        <p class="commentsText text-justify"> <?= nl2br(htmlspecialchars($comment["content"])); ?> </p>
+                        <p class="commentsText text-justify"> <?= nl2br($comment["content"]); ?> </p>
                     </div>
                 </div>
                 <div class="row">
@@ -84,7 +96,7 @@
     </section>
 
     <!--******** INSCRIPTION SI NON CONNECTE ********-->
-    <?php if (isset($_SESSION['id']) != true) { ?>
+    <?php if (isset($_SESSION['userId']) != true) { ?>
         <section class="col-lg-8 offset-lg-2" id="postComments">
             <div class="row">
                 <div class="col-lg-12 text-center">

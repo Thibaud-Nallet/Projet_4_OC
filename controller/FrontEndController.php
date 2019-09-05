@@ -171,30 +171,18 @@ class FrontEndController
 
     public function newComment()
     {
-        if (!empty($_POST)) {
+        if (!empty($_POST['pseudoComment']) && !empty($_POST['textComment'])) {
+            $check = new FrontEndController;
+            $req = new FrontEndManager;
             $erreur = null;
-            if (empty($_POST['pseudoComment']) && !empty($_POST['textComment'])) {
-                $erreur = "Tous les champs doivent être complétés !";
-            }
-            header("Location: index.php?action=post&id=" . $_SESSION['idPost']);
+            $pseudoComment = $check->checkInput($_POST['pseudoComment']);
+            $textComment = $check->checkInput($_POST['textComment']);
+            $idPost = $check->checkInput($_POST['idPost']);
+            $comment = $req->postComment($_POST['textComment'], $_SESSION['userId'], $idPost); 
+            $erreur = "code0";
+        } else {
+            $erreur = "code1";
         }
-
-
-
-
-        /*if (!empty($_POST['pseudoComment']) && !empty($_POST['textComment'])) {
-        $erreur = null;
-        $pseudoComment = checkInput($_POST['pseudoComment']);
-        $textComment = checkInput($_POST['textComment']);
-        $comment = postComment($_POST['textComment'], $_SESSION['id'], $_GET['id']);
-        $erreur = "Votre commentaire a bien été créé !";
-        
-    }
-    else
-    {
-        $erreur = "Tous les champs doivent être complétés !";
-    }
-    header("Location: index.php?action=post&id=" . $_GET['id']);
-    */
+        header("Location: index.php?action=post&id=" . $_POST['idPost'] . "&erreur=" . $erreur . "#postComments");
     }
 }

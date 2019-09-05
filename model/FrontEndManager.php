@@ -133,12 +133,12 @@ class FrontEndManager extends Manager {
         return $insertPassword;
     }
 
-    public function postComment($content, $id, $postId)
+    public function postComment($content, $id_user, $id_post)
     {
         $bdd = $this->dbConnect();
         $comments = $bdd->prepare('INSERT INTO comments(content, id_user, id_post, date_creation) 
     VALUES(?, ?, ?, NOW())');
-        $comment = $comments->execute(array($content, $id, $postId));
+        $comment = $comments->execute(array($content, $id_user, $id_post));
 
         return $comment;
     }

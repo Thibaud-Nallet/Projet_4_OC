@@ -585,7 +585,6 @@ footer li a :hover {
 
 .effetArticle {
     border-right: 1px solid #d1b025;
-    padding-top: 5px;
 }
 
 .effetIcone:hover {
@@ -601,3 +600,4 @@ footer li a :hover {
 .error {
     color: rgba(220, 20, 60);
 }
+
