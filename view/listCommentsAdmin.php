@@ -13,7 +13,7 @@
     <article id="gestionArticle">
         <div class="row" id="ligneArticle">
             <div class="col-md-1 offset-md-1 effetArticle">
-                <p> <?= $nombreDePages ?> Id </p>
+                <p> Titre </p>
             </div>
             <div class="col-md-2 effetArticle">
                 <p> Pseudo </p>
@@ -47,20 +47,20 @@
                     <p> <?= htmlspecialchars($comments['content']); ?></p>
                 </div>
                 <div class="col-md-1">
-                    <a href="#"><i class="far fa-eye-slash fa-2x effetIcone"></i> </a>
+                        <a href="index.php?action=deleteComments&amp;id=<?= $comments["id"] ?>"><i class=" far fa-eye-slash fa-2x effetIcone"></i> </a>
                 </div>
             </div>
         </article>
     <?php } ?>
     <div class="row pagination">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-center">
             <p> Page :
                 <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
                 {
                     //On va faire notre condition
                     if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
                     { ?>
-                         [  <?= $i ?>  ]
+                        [ <?= $i ?> ]
                     <?php } else //Sinon...
                         { ?>
                         <a href="index.php?action=listCommentsAdmin&page=<?= $i ?>"> <span class="crochet"> <?= $i ?> </span></a>

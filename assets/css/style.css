@@ -609,10 +609,39 @@ footer li a :hover {
     color: #e0e8ed;
 }
 
-.crochet{
+.yellow{
     color : #d1b025;
 }
 
-.crochet:hover{
+.yellow:hover{
     color : #e0e8ed;
+}
+
+.submitYellow {
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 10px 10px 20px 10px;
+    background-color: #d1b025;
+}
+
+.submitYellow:hover {
+    border: 3px solid #d1b025;
+    background-color: #e0e8ed;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#gestionArticleDelete {
+    border: 1px solid #d1b025;
+    background-color: #e0e8ed;
+   
+    padding: 20px 20px;
+}
+
+#gestionArticleDelete a {
+    color : #e0e8ed;
+    
+}
+#gestionArticleDelete a:hover {
+    color: #d1b025;
 }

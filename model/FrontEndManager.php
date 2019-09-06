@@ -21,15 +21,24 @@ class FrontEndManager extends Manager {
     WHERE id = ?'
         );
         $req->execute(array($postId));
-        $post = $req->fetch();
+        $post = $req->fetch(); 
 
         return $post;
     }
+    public function maxPost() {
+        $bdd = $this->dbConnect();
+        $total = $bdd->query('SELECT COUNT(*) AS total FROM post');
+        $post_total = $total->fetch();
+        $maxPost = $post_total['total'];
+
+        return $maxPost;
+    }
+     
     //RECUPERE LES COMMENTAIRES DE L'ARTICLE SELECTIONNE
     function getComments($postId)
     {
         $bdd = $this->dbConnect();
-        $comments = $bdd->prepare('SELECT pseudo, comments.id, id_user, id_post, content, DATE_FORMAT(date_creation, "%d/%m/%Y à %Hh%imin%ss") AS creation_date_fr 
+        $comments = $bdd->prepare('SELECT pseudo, comments.id, id_user, id_post, content, DATE_FORMAT(date_creation, "%d/%m/%Y à %Hh%imin%ss") AS creation_date_fr
     FROM comments
     INNER JOIN user ON user.id = comments.id_user 
     WHERE id_post = ? 
@@ -38,6 +47,26 @@ class FrontEndManager extends Manager {
 
         return $comments;
     }
+    public function totalComment($postId)
+    {
+       $bdd = $this->dbConnect();
+       $retour_total = $bdd->prepare(' SELECT COUNT (*) AS total FROM comments WHERE id_post = ?');
+       //SELECT COUNT(*) AS total FROM comments INNER JOIN post ON post.id = comments.id_post WHERE post.id = comments.id_post'
+        $retour_total->execute(array($postId));
+
+        $total = $retour_total['total'];
+
+        return $total;
+    }
+
+    public function retourMessages($premiereEntree, $messagesParPage)
+    {
+        $bdd = $this->dbConnect();
+        $retour_messages = $bdd->query('SELECT * FROM comments ORDER BY id DESC LIMIT ' . $premiereEntree . ', ' . $messagesParPage . '');
+
+        return $retour_messages;
+    }
+   
 
     public function verifMailDb($inputMail)
     {

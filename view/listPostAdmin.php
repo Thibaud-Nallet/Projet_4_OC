@@ -50,10 +50,10 @@
                     <p> <?= htmlspecialchars($article["creation_date_fr"]); ?> </p>
                 </div>
                 <div class="col-md-1">
-                    <a href="editPost.php"><i class="far fa-edit fa-2x effetIcone"></i> </a>
+                    <a href="index.php?action=editPostAdmin&amp;id=<?= $article['id'] ?>"><i class="far fa-edit fa-2x effetIcone"></i> </a>
                 </div>
                 <div class="col-md-1">
-                    <a href="#"><i class="far fa-trash-alt fa-2x effetIcone"></i> </a>
+                    <a href="index.php?action=deletePostAdmin&amp;id=<?= $article['id'] ?>"><i class="far fa-trash-alt fa-2x effetIcone"></i> </a>
                 </div>
             </div>
         </article>

@@ -21,10 +21,36 @@ class FrontEndController
     {
         //AFFICHE L'ARTICLE
         $req = new FrontEndManager;
-        $post = $req->getPost($_GET['id']);
-        //$_SESSION['idPost'] = $post['id'];
-        //AFFICHE LES COMMENTAIRES
+        $maxPost = $req->maxPost();
+        if($_GET["id"] <= $maxPost){
+            $post = $req->getPost($_GET['id']);
+        } else {
+            throw new Exception ("Cet id n'existe pas");
+        }
+        /*
+        $messagesParPage = 2;
+        $total= $req->totalComment($_GET['id']); //Donne le nombre total de commentaires : soit 13
+
+        $nombreDePages = ceil($total / $messagesParPage); //Donne le nombre de pages à créer : soit 3 
+
+        if (isset($_GET['page'])) // Si la variable $_GET['page'] existe...
+        {
+            $pageActuelle = intval($_GET['page']);
+
+            if ($pageActuelle > $nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
+            {
+                $pageActuelle = $nombreDePages;
+            }
+        } else // Sinon
+        {
+            $pageActuelle = 1; // La page actuelle est la n°1    
+        }
+        $premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
+
+        $retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);*/
+        
         $comments = $req->getComments($_GET['id']);
+        
         require('view/post.php');
     }
 
@@ -48,7 +74,6 @@ class FrontEndController
             $check = new FrontEndController;
             $mailConnect = $check->checkInput($_POST['mailConnect']);
             $mdpConnect = $check->checkInput($_POST['passwordConnect']);
-
             if (!empty($mailConnect) && !empty($mdpConnect)) {
                 $req = new FrontEndManager;
                 $userExist = $req->checkUserDb($_POST["mailConnect"], $_POST["passwordConnect"]);

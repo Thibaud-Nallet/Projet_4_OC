@@ -35,7 +35,7 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
-                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION['pseudo'] ?>">
+                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?=  $_SESSION['pseudo'] ?>">
                                 </div>
                                 <div class="col-md-6" style="visibility:hidden;">
                                     <label for="idPost" class="labelForm"> Id du post </label>
@@ -93,6 +93,23 @@
                 </div>
             </article>
         <?php } ?>
+    <div class="row pagination">
+        <div class="col-lg-12 text-center">
+            <p> Page :
+                <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
+                {
+                    //On va faire notre condition
+                    if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
+                    { ?>
+                         [  <?= $i ?>  ]
+                    <?php } else //Sinon...
+                        { ?>
+                        <a href="index.php?action=listCommentsAdmin&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
+                <?php }
+                } ?>
+            </p>
+        </div>
+    </div>
     </section>
 
     <!--******** INSCRIPTION SI NON CONNECTE ********-->

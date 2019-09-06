@@ -21,7 +21,6 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $frontEnd->post();
             } else {
-                $_GET["action"] = "error";
                 throw new Exception("Erreur : cette page n'existe pas");
             }
         }
@@ -59,10 +58,10 @@ try {
         }
         //Routeur edition du profil
         elseif ($_GET["action"] == "editProfil") {
-            if (isset($_GET['userId']) && $_GET["userId"] > 0) {
+            if (isset($_SESSION['userId']) && $_SESSION["userId"] > 0) {
                 $frontEnd->editProfil();
             } else {
-                echo "Erreur : cette page n'existe pas";
+                throw new Exception("Erreur : cette page n'existe pas");
             }
         } elseif ($_GET["action"] == "newComment") {
             //if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -72,14 +71,22 @@ try {
             $frontEnd->comeBackProfil();
         } elseif ($_GET["action"] == "listPostAdmin") {
             $backEnd->listPostAdmin();
+        } elseif ($_GET["action"] == "editPostAdmin") {
+            $backEnd->editPostAdmin();
+        } elseif ($_GET["action"] == "editPost") {
+            $backEnd->editPost();
         } elseif ($_GET["action"] == "writePostAdmin") {
             $backEnd->writePostAdmin();
         } elseif ($_GET["action"] == "listCommentsAdmin") {
-            if(isset($_GET['page']) && $_GET['page'] > 0) {
                 $backEnd->listCommentsAdmin();
-            } else {
-                throw new Exception("Erreur : cette page n'existe pas");
+        } elseif ($_GET["action"] == "deleteComments") {
+            $backEnd->deleteComments();
+        } elseif ($_GET["action"] == "deletePostAdmin") {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $backEnd->deletePostAdmin();
             }
+        } elseif ($_GET["action"] == "delete") {
+            $backEnd->delete();
         } else {
             throw new Exception("Erreur : cette page n'existe pas");
         }
