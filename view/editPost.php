@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-10 offset-md-1">
                     <label for="input_NewContent"> Votre article </label>
-                    <textarea id="textComment" name="input_NewContent" class="formInput" rows="20"><?= nl2br($postAdmin["content"]); ?></textarea>
+                    <textarea id="mytextarea" name="input_NewContent" class="formInput" rows="20"><?= nl2br($postAdmin["content"]); ?></textarea>
                 </div>
             </div>
             <div class="row">

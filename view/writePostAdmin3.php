@@ -23,35 +23,39 @@
     <!-- Feuille de style Perso -->
     <link rel="stylesheet" href="/Projet_4_OC/assets/css/style.css">
     <!--***** TITLE *****-->
-    <title> <?= $title ?> </title>
-    
+    <title> Interface Admin | Ecrire un article </title>
+    <script src="https://cdn.tiny.cloud/1/b8x3q3ok9xunrv08y5thgsudar2lodb9fn6to6dz8pprgn5f/tinymce/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+
 </head>
 
 <body>
-    <?= $content ?>
-</body>
+    <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
+    <section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
+        <h2> Ecrivez un article </h2>
 
-<!--***** SCRIPT *****-->
-<!-- Script utilisation Material Design -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
-</script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
-</script>
-<script>
-    $(document).ready(function() {
-        $('body').bootstrapMaterialDesign();
-    });
-</script>
-<script src='https://cdn.tiny.cloud/1/b8x3q3ok9xunrv08y5thgsudar2lodb9fn6to6dz8pprgn5f/tinymce/5/tinymce.min.js'></script>
-<script>
-    tinymce.init({
-        selector: '#mytextarea',
-        language: 'fr',
-    });
-</script>
-<!-- Fichier js -->
-<script <?= $script ?>> </script>
+
+        <textarea id="mytextarea"> Bonjour le monde! </textarea>
+
+
+        <!--***** SCRIPT *****-->
+        <!-- Script utilisation Material Design -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
+        </script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('body').bootstrapMaterialDesign();
+            });
+        </script>
+        <!-- Fichier js -->
+
 </body>
 
 </html>

@@ -95,4 +95,11 @@ class BackEndManager extends Manager
         return $update_post ;
     }
 
+    public function writePost($idAuthor, $title, $content) {
+        $bdd = $this->dbConnect();
+        $write_post = $bdd->prepare('INSERT INTO post (date_creation, id_author, title, content) VALUES (NOW(), ?, ?, ?)');
+        $write_post->execute(array($idAuthor, $title, $content));
+        return $write_post;
+    }
+
 }

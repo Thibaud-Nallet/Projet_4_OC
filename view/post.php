@@ -41,7 +41,7 @@
                                     <label for="idPost" class="labelForm"> Id du post </label>
                                     <input id="idPost" type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12"> 
                                     <label for="textComment" class="labelForm"> Votre commentaire <span class="etoileNoir">*</span></label>
                                     <textarea id="textComment" name="textComment" class="formInput" rows="5"></textarea>
                                 </div>

@@ -108,17 +108,22 @@ class BackEndController
 
     public function writePostAdmin()
     {
-        if(($_POST)) {
+        if(!empty($_POST)) {
             $erreur = null;
-            if (empty($_POST["input_Title"])) {
+            if (!empty($_POST["input_Title"])) {
+                if (!empty($_POST["input_Content"])) {
+                    $req = new BackEndManager;
+                    $write_post = $req->writePost($_SESSION["userId"], $_POST["input_Title"], $_POST["input_Content"]);
+                    $erreur = "Votre article a été publié !";
+                } else {
+                    $erreur = "Et un article !";
+                }
+            } else {
                 $erreur = "Il faut un titre";
-                
             }
-            header("Location: index.php?action=comeBackProfilAdmin");
         }
-        
         require("view/writePostAdmin.php");
     }
 
-    
+    //header("Location: index.php?action=comeBackProfilAdmin");
 }
