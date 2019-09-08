@@ -41,7 +41,7 @@
                                     <label for="idPost" class="labelForm"> Id du post </label>
                                     <input id="idPost" type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
                                 </div>
-                                <div class="col-md-12"> 
+                                <div class="col-md-12">
                                     <label for="textComment" class="labelForm"> Votre commentaire <span class="etoileNoir">*</span></label>
                                     <textarea id="textComment" name="textComment" class="formInput" rows="5"></textarea>
                                 </div>
@@ -87,29 +87,56 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-2 offset-lg-10">
-                        <button class="signale"> Signalé </button>
-                    </div>
+                    <?php if ($comment["alert"] == "true") { ?>
+                        <div class="col-lg-12">
+                            <p style="color:gray;"> Article signalé, en attente de modération </p>
+                        </div>
                 </div>
+            <?php } else { ?>
+
+                <form action="index.php?action=signalComment" method="post">
+                    <div class="row">
+
+                        <div class="col-lg-5" style="visibility:hidden">
+                            <input id="idPost" type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
+                        </div>
+                        <div class="col-lg-5" style="visibility:hidden">
+                            <input name="idSignal" value="<?= $comment["id"] ?>">
+                        </div>
+                        <div class="col-lg-2 conteneurSignale">
+
+                            <button class=" signale"> Signalé </button>
+                        </div>
+
+
+                    </div>
+                </form>
+
+
+
+            <?php } ?>
+
+
+
             </article>
         <?php } ?>
-    <div class="row pagination">
-        <div class="col-lg-12 text-center">
-            <p> Page :
-                <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
-                {
-                    //On va faire notre condition
-                    if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
-                    { ?>
-                         [  <?= $i ?>  ]
-                    <?php } else //Sinon...
+        <div class="row pagination">
+            <div class="col-lg-12 text-center">
+                <p> Page :
+                    <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
+                    {
+                        //On va faire notre condition
+                        if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
                         { ?>
-                        <a href="index.php?action=listCommentsAdmin&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
-                <?php }
-                } ?>
-            </p>
+                            [ <?= $i ?> ]
+                        <?php } else //Sinon...
+                            { ?>
+                            <a href="index.php?action=listCommentsAdmin&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
+                    <?php }
+                    } ?>
+                </p>
+            </div>
         </div>
-    </div>
     </section>
 
     <!--******** INSCRIPTION SI NON CONNECTE ********-->

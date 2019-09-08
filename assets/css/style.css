@@ -356,9 +356,15 @@ footer li a :hover {
     color: #d1b025;
 }
 
+.signaler {
+    border: 1px solid black;
+}
+.conteneurSignale{
+    padding-left: 60px;
+}
 .signale {
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px 20px;
     background-color: rgba(220, 20, 60);
     color: #e0e8ed;
     cursor: pointer;
@@ -570,17 +576,19 @@ footer li a :hover {
 
 /********** INTERFACE ADMIN : LISTE DES ARTICLES **********/
 #ligneArticle {
-    padding: 30px 0 20px 0;
+    padding: 30px 10px 20px 10px;
 }
 
 #gestionArticle {
-    border: 1px solid #d1b025;
+    border: 5px ridge #d1b025;
     background-color: #e0e8ed;
     margin: 20px auto;
 }
 
-.signalComments {
-    color: rgba(220, 20, 60);
+#signalComments {
+    border: 5px groove rgba(220, 20, 60);
+    color: #18202d;
+    background-color: #;
 }
 
 .effetArticle {

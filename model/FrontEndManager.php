@@ -38,7 +38,7 @@ class FrontEndManager extends Manager {
     function getComments($postId)
     {
         $bdd = $this->dbConnect();
-        $comments = $bdd->prepare('SELECT pseudo, comments.id, id_user, id_post, content, DATE_FORMAT(date_creation, "%d/%m/%Y à %Hh%imin%ss") AS creation_date_fr
+        $comments = $bdd->prepare('SELECT pseudo, comments.id, id_user, id_post, content, DATE_FORMAT(date_creation, "%d/%m/%Y à %Hh%imin%ss") AS creation_date_fr, alert
     FROM comments
     INNER JOIN user ON user.id = comments.id_user 
     WHERE id_post = ? 
@@ -71,7 +71,12 @@ class FrontEndManager extends Manager {
         return $retour_messages;
     }
    
-
+public function signalComment($idSignal){
+        $bdd = $this->dbConnect();
+        $signalAlert = $bdd->prepare('UPDATE comments SET alert = "true" WHERE id = ?');
+        $signalAlert->execute(array($idSignal));
+        return $signalAlert;
+}
     public function verifMailDb($inputMail)
     {
         $bdd = $this->dbConnect();

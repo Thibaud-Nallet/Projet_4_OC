@@ -6,13 +6,13 @@
 
 <!--******** INTERFACE ADMIN ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
-<section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
+<section class="col-md-12" id="interfaceAdmin" id="test">
     <h2> Liste des commentaires </h2>
 
 
     <article id="gestionArticle">
         <div class="row" id="ligneArticle">
-            <div class="col-md-1 offset-md-1 effetArticle">
+            <div class="col-md-2 effetArticle">
                 <p> Titre </p>
             </div>
             <div class="col-md-2 effetArticle">
@@ -21,7 +21,7 @@
             <div class="col-md-2 effetArticle">
                 <p> Date de création </p>
             </div>
-            <div class="col-md-4 effetArticle">
+            <div class="col-md-5 effetArticle">
                 <p> Commentaires </p>
             </div>
             <div class="col-md-1">
@@ -31,27 +31,46 @@
     </article>
 
     <?php
-    while ($comments = $pseudoCommentAdmin->fetch() and $comment = $titleCommentAdmin->fetch()) { ?>
-        <article id="gestionArticle">
-            <div class="row" id="ligneArticle">
-                <div class="col-md-1 offset-md-1 effetArticle">
-                    <p> <?= htmlspecialchars($comment['title']); ?> </p>
-                </div>
-                <div class="col-md-2 effetArticle">
-                    <p> <?= htmlspecialchars($comments['pseudo']); ?> </p>
-                </div>
-                <div class="col-md-2 effetArticle">
-                    <p> <?= htmlspecialchars($comments['creation_date_fr']); ?> </p>
-                </div>
-                <div class="col-md-4 effetArticle text-justify">
-                    <p> <?= htmlspecialchars($comments['content']); ?></p>
-                </div>
-                <div class="col-md-1">
+    while($comments = $pseudoCommentAdmin->fetch() and $comment = $titleCommentAdmin->fetch()) {
+        if($comment['alert'] ==  "true") {  ?>
+            <article class="signalComments" id="signalComments">
+                <div class="row" id="ligneArticle">
+                    <div class="col-md-2 effetArticle">
+                        <p> <?= htmlspecialchars($comment['title']); ?> </p>
+                    </div>
+                    <div class="col-md-2 effetArticle">
+                        <p> <?= htmlspecialchars($comments['pseudo']); ?> </p>
+                    </div>
+                    <div class="col-md-2 effetArticle">
+                        <p> <?= htmlspecialchars($comments['creation_date_fr']); ?> </p>
+                    </div>
+                    <div class="col-md-5 effetArticle text-justify">
+                        <p> <?= htmlspecialchars($comments['content']); ?></p>
+                    </div>
+                    <div class="col-md-1">
                         <a href="index.php?action=deleteComments&amp;id=<?= $comments["id"] ?>"><i class=" far fa-eye-slash fa-2x effetIcone"></i> </a>
+                    </div>
                 </div>
-            </div>
-        </article>
-    <?php } ?>
+            </article>
+        <?php } else { ?>
+            <article id="gestionArticle">
+                <div class="row" id="ligneArticle">
+                    <div class="col-md-2  effetArticle">
+                        <p> <?= htmlspecialchars($comment['title']); ?> </p>
+                    </div>
+                    <div class="col-md-2 effetArticle">
+                        <p> <?= htmlspecialchars($comments['pseudo']); ?> </p>
+                    </div>
+                    <div class="col-md-2 effetArticle">
+                        <p> <?= htmlspecialchars($comments['creation_date_fr']); ?> </p>
+                    </div>
+                    <div class="col-md-5 effetArticle text-justify">
+                        <p> <?= htmlspecialchars($comments['content']); ?></p>
+                    </div>
+                </div>
+            </article>
+    <?php }
+    } ?>
     <div class="row pagination">
         <div class="col-lg-12 text-center">
             <p> Page :

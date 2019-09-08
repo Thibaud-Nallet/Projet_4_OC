@@ -47,7 +47,6 @@ class BackEndController
         }
         $premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
 
-        //$retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);
         $pseudoCommentAdmin = $req->getCommentsAdmin($premiereEntree, $messagesParPage);
         $titleCommentAdmin = $req->regetCommentsAdmin();
 
@@ -125,5 +124,4 @@ class BackEndController
         require("view/writePostAdmin.php");
     }
 
-    //header("Location: index.php?action=comeBackProfilAdmin");
 }

@@ -23,6 +23,8 @@ try {
             } else {
                 throw new Exception("Erreur : cette page n'existe pas");
             }
+        } elseif ($_GET["action"] == "signalComment") {
+            $frontEnd->signalComment();
         }
         //Routeur nav_contact
         elseif ($_GET["action"] == "contact") {

@@ -31,10 +31,10 @@ class BackEndManager extends Manager
     {
         $bdd = $this->dbConnect();
         $pseudoCommentAdmin = $bdd->query(
-            'SELECT pseudo, comments.id, id_user, DATE_FORMAT(date_creation, "%d/%m/%Y") AS creation_date_fr, content, id_post
+            'SELECT pseudo, comments.id, id_user, DATE_FORMAT(date_creation, "%d/%m/%Y") AS creation_date_fr, content, id_post, alert
         FROM comments
         INNER JOIN user ON user.id = comments.id_user
-        ORDER BY date_creation DESC
+        ORDER BY alert
         LIMIT ' . $premiereEntree . ', ' . $messagesParPage . '');
 
         return $pseudoCommentAdmin;
@@ -42,7 +42,7 @@ class BackEndManager extends Manager
     public function regetCommentsAdmin()
     {
         $bdd = $this->dbConnect();
-        $titleCommentAdmin = $bdd->query('SELECT title, id_post
+        $titleCommentAdmin = $bdd->query('SELECT title, id_post, alert
             FROM comments
             INNER JOIN post ON post.id = comments.id_post');
 

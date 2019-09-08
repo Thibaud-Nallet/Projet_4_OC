@@ -52,10 +52,10 @@ class FrontEndController
         */
         $comments = $req->getComments($_GET['id']);
         
-        
         require('view/post.php');
     }
 
+    
     public function contact()
     {
         require("view/formContact.php");
@@ -212,6 +212,13 @@ class FrontEndController
         }
         header("Location: index.php?action=post&id=" . $_POST['idPost'] . "&erreur=" . $erreur . "#postComments");
     }
+    public function signalComment()
+    {
+        $req = new FrontEndManager;
+        $commentAlert = $req->signalComment($_POST["idSignal"]);
+        header("Location:index.php?action=post&id=" . $_POST['idPost']);
+    }
+
 
     public function error() {
         //$_SESSION = array();
