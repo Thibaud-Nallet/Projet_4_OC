@@ -35,7 +35,7 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
-                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?=  $_SESSION['pseudo'] ?>">
+                                    <input id="pseudoComment" type="text" name="pseudoComment" class="formInput" value="<?= $_SESSION['pseudo'] ?>">
                                 </div>
                                 <div class="col-md-6" style="visibility:hidden;">
                                     <label for="idPost" class="labelForm"> Id du post </label>

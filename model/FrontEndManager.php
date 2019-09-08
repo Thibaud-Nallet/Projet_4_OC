@@ -47,14 +47,18 @@ class FrontEndManager extends Manager {
 
         return $comments;
     }
+
     public function totalComment($postId)
     {
        $bdd = $this->dbConnect();
-       $retour_total = $bdd->prepare(' SELECT COUNT (*) AS total FROM comments WHERE id_post = ?');
+       $total = $bdd->prepare('SELECT COUNT * FROM comments WHERE id_post = ?');
        //SELECT COUNT(*) AS total FROM comments INNER JOIN post ON post.id = comments.id_post WHERE post.id = comments.id_post'
-        $retour_total->execute(array($postId));
+    $total->execute(array($postId));
 
-        $total = $retour_total['total'];
+        //$retour_total = $bdd->query('SELECT COUNT(*) AS total FROM comments');
+        //$donnees_total = $retour_total->fetch();
+        //$total = $donnees_total['total'];
+        //$total = $retour_total['total'];
 
         return $total;
     }

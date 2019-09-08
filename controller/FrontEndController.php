@@ -27,11 +27,12 @@ class FrontEndController
         } else {
             throw new Exception ("Cet id n'existe pas");
         }
-        /*
+       
         $messagesParPage = 2;
-        $total= $req->totalComment($_GET['id']); //Donne le nombre total de commentaires : soit 13
+        $total= $req->totalComment($_GET['id']); //Donne le nombre total de commentaires : soit 13 $_GET['id']
 
-        $nombreDePages = ceil($total / $messagesParPage); //Donne le nombre de pages à créer : soit 3 
+        /*
+        $nombreDePages = intval(ceil($total / $messagesParPage)); //Donne le nombre de pages à créer : soit 3 
 
         if (isset($_GET['page'])) // Si la variable $_GET['page'] existe...
         {
@@ -47,9 +48,10 @@ class FrontEndController
         }
         $premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
 
-        $retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);*/
-        
+        $retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);
+        */
         $comments = $req->getComments($_GET['id']);
+        
         
         require('view/post.php');
     }

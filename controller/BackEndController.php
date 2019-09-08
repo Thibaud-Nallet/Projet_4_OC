@@ -63,8 +63,8 @@ class BackEndController
     public function delete() {
        if(isset($_POST)) {
             $req = new BackEndManager;
-            $delete_post= $req->deletePost($_GET["id"]);
             $delete_post_comments = $req->deleteCommentsPost($_GET["id"]);
+            $delete_post= $req->deletePost($_GET["id"]);
        }
         header("Location: index.php?action=listPostAdmin");
     }
