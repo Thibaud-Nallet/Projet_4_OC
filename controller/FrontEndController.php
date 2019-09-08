@@ -154,7 +154,13 @@ class FrontEndController
     public function homeProfil()
     {
         $req = new FrontEndManager;
-        $userInfo = $req->viewProfil();
+        $maxProfil = $req->maxProfil();
+        if ($_GET["id"] <= $maxProfil) {
+            $userInfo = $req->viewProfil();
+        } else {
+            throw new Exception("Cet id n'existe pas");
+        }
+        
         require("view/homeProfil.php");
     }
 

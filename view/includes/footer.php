@@ -25,11 +25,22 @@
             </div>
             <div class="col-lg-4">
                 <h5 class="underline"> Admin</h5>
-                <ul>
-                    <li>
-                        <a class="nav-link" href="index.php?action=login"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
-                    </li>
-                </ul>
+                <?php
+                if (isset($_SESSION['userId']) != true) {
+                    ?>
+                    <ul>
+                        <li>
+                            <a class="nav-link" href="index.php?action=login"> <i class="fas fa-sign-in-alt"> </i> Connexion </a>
+                        </li>
+                    </ul>
+                <?php } else { ?>
+                    <ul>
+                        <li>
+                        <li> <a class="nav-link"> Bienvenue <span class="pseudoNav">
+                                    <?= $_SESSION['pseudo'] ?> </span></a></li>
+                    </ul>
+
+                <?php } ?>
             </div>
         </div>
     </div>

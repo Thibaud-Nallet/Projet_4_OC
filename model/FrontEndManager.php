@@ -33,6 +33,17 @@ class FrontEndManager extends Manager {
 
         return $maxPost;
     }
+
+    public function maxProfil()
+    {
+        $bdd = $this->dbConnect();
+        $total = $bdd->query('SELECT COUNT(*) AS total FROM user');
+        $post_total = $total->fetch();
+        $maxProfil = $post_total['total'];
+
+        return $maxProfil;
+    }
+
      
     //RECUPERE LES COMMENTAIRES DE L'ARTICLE SELECTIONNE
     function getComments($postId)

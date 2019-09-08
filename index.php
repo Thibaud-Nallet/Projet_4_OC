@@ -65,34 +65,57 @@ try {
             } else {
                 throw new Exception("Erreur : cette page n'existe pas");
             }
-        } elseif ($_GET["action"] == "newComment") {
-            //if (isset($_GET['id']) && $_GET['id'] > 0) {
+        }
+        //Routeur nouveau commentaire page post
+        elseif ($_GET["action"] == "newComment") {
             $frontEnd->newComment();
-            //}
-        } elseif ($_GET["action"] == "comeBackProfil") {
+        }
+        //Routeur lien pour revenir à la page d'accueil admin
+        elseif ($_GET["action"] == "comeBackProfil") {
             $frontEnd->comeBackProfil();
-        } elseif ($_GET["action"] == "listPostAdmin") {
+        }
+        //Routeur afficher tous les articles
+        elseif ($_GET["action"] == "listPostAdmin") {
             $backEnd->listPostAdmin();
-        } elseif ($_GET["action"] == "editPostAdmin") {
-            $backEnd->editPostAdmin();
-        } elseif ($_GET["action"] == "editPost") {
-            $backEnd->editPost();
-        } elseif ($_GET["action"] == "writePostAdmin") {
-            $backEnd->writePostAdmin();
-        } elseif ($_GET["action"] == "listCommentsAdmin") {
-                $backEnd->listCommentsAdmin();
-        } elseif ($_GET["action"] == "deleteComments") {
-            $backEnd->deleteComments();
-        } elseif ($_GET["action"] == "deletePostAdmin") {
+        }
+        //Routeur de la page pour modifier un article
+        elseif ($_GET["action"] == "editPostAdmin") {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $backEnd->deletePostAdmin();
+                $backEnd->editPostAdmin();
+            } else {
+                throw new Exception("Erreur : cette page n'existe pas");
             }
-        } elseif ($_GET["action"] == "delete") {
+        }
+        //Routeur qui edit le post
+        elseif ($_GET["action"] == "editPost") {
+            $backEnd->editPost();
+        }
+        //Routeur pour écrire un nouvel article
+        elseif ($_GET["action"] == "writePostAdmin") {
+            $backEnd->writePostAdmin();
+        }
+        //Routeur pour lister tous les commentaires 
+        elseif ($_GET["action"] == "listCommentsAdmin") {
+            $backEnd->listCommentsAdmin();
+        }
+        //Routeur pour la suppression d'un commentaires
+        elseif ($_GET["action"] == "deleteComments") {
+            $backEnd->deleteComments();
+        }
+        //Routeur pour la suppression d'un post et de tous ses commentaires
+        elseif ($_GET["action"] == "deletePostAdmin") {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $backEnd->deletePostAdmin();
+            }
+        }
+        //Routeur pour l'action de la supression du post (page confirmation)
+        elseif ($_GET["action"] == "delete") {
             $backEnd->delete();
-        } else {
+        } 
+        // Sinon les actions ne sont pas connues envoye une erreur
+        else {
             throw new Exception("Erreur : cette page n'existe pas");
         }
-        
     }
     //Lancement de la page d'accueil si aucune action
     else {
@@ -100,8 +123,8 @@ try {
     }
 } //-- try --
 catch (Exception $e) {
-        $frontEnd->error();
-        echo $e->getMessage();
+    $frontEnd->error();
+    echo $e->getMessage();
 }
 
 //throw new Exception
