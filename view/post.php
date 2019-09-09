@@ -93,7 +93,6 @@
                         </div>
                 </div>
             <?php } else { ?>
-
                 <form action="index.php?action=signalComment" method="post">
                     <div class="row">
 
@@ -104,20 +103,11 @@
                             <input name="idSignal" value="<?= $comment["id"] ?>">
                         </div>
                         <div class="col-lg-2 conteneurSignale">
-
                             <button class=" signale"> Signalé </button>
                         </div>
-
-
                     </div>
                 </form>
-
-
-
             <?php } ?>
-
-
-
             </article>
         <?php } ?>
         <div class="row pagination">
@@ -131,7 +121,7 @@
                             [ <?= $i ?> ]
                         <?php } else //Sinon...
                             { ?>
-                            <a href="index.php?action=listCommentsAdmin&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
+                            <a href="index.php?action=post&id=<?= $_GET['id'];?>&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
                     <?php }
                     } ?>
                 </p>

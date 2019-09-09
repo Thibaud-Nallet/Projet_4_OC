@@ -8,7 +8,6 @@
                         <a class="nav-link" href="index.php?action=welcomeHome"> <i class="fas fa-home"></i> Accueil</a>
                     </li>
                     <li> <a class="nav-link" href="index.php?action=listPosts"> <i class="fas fa-blog"></i> Blog </a></li>
-                    <li> <a class="nav-link" href="index.php?action=contact"> <i class="far fa-address-book"></i> Contact </a></li>
                 </ul>
             </div>
             <div class="col-lg-4">

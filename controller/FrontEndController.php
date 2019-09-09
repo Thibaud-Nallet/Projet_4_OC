@@ -4,63 +4,6 @@ require("model/FrontEndManager.php");
 
 class FrontEndController
 {
-    //PAGE D'ACCUEIL
-    public function welcomeHome()
-    {
-        require('view/home.php');
-    }
-    //PAGE BLOG
-    public function listPosts()
-    {
-        $req = new FrontEndManager;
-        $posts = $req->getPosts();
-        require('view/blog.php');
-    }
-    //PAGE ARTICLE SELECTIONNE
-    public function post()
-    {
-        //AFFICHE L'ARTICLE
-        $req = new FrontEndManager;
-        $maxPost = $req->maxPost();
-        if($_GET["id"] <= $maxPost){
-            $post = $req->getPost($_GET['id']);
-        } else {
-            throw new Exception ("Cet id n'existe pas");
-        }
-       
-        $messagesParPage = 2;
-        $total= $req->totalComment($_GET['id']); //Donne le nombre total de commentaires : soit 13 $_GET['id']
-
-        /*
-        $nombreDePages = intval(ceil($total / $messagesParPage)); //Donne le nombre de pages à créer : soit 3 
-
-        if (isset($_GET['page'])) // Si la variable $_GET['page'] existe...
-        {
-            $pageActuelle = intval($_GET['page']);
-
-            if ($pageActuelle > $nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
-            {
-                $pageActuelle = $nombreDePages;
-            }
-        } else // Sinon
-        {
-            $pageActuelle = 1; // La page actuelle est la n°1    
-        }
-        $premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
-
-        $retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);
-        */
-        $comments = $req->getComments($_GET['id']);
-        
-        require('view/post.php');
-    }
-
-    
-    public function contact()
-    {
-        require("view/formContact.php");
-    }
-
     public function checkInput($data)
     {
         $data = trim($data);
@@ -69,6 +12,90 @@ class FrontEndController
         $data = nl2br($data);
         return $data;
     }
+
+    /* ----------------------------------------------------------------- */
+    /* --                     PAGE D'ACCUEIL                          -- */
+    /* ----------------------------------------------------------------- */
+
+    public function welcomeHome()
+    {
+        require('view/home.php');
+    }
+
+    /* ----------------------------------------------------------------- */
+    /* --                     PAGE DU BLOG                            -- */
+    /* ----------------------------------------------------------------- */
+
+    public function listPosts()
+    {
+        $req = new FrontEndManager;
+        $posts = $req->getPosts();
+        require('view/blog.php');
+    }
+
+    /* ------------------ PAGE ARTICLE SELECTIONNE -------------------- */
+
+    public function post()
+    {
+        $req = new FrontEndManager;
+        //Verif de l'url
+        $maxPost = $req->maxPost();
+        if ($_GET["id"] <= $maxPost) {
+            $post = $req->getPost($_GET['id']);
+        } else {
+            throw new Exception("Cet id n'existe pas");
+        }
+        //Pagination des commentaires
+        $messagesParPage = 3;
+        $total = $req->totalComment($_GET['id']);
+        $result = $total["nb_lignes"];
+        $nombreDePages = intval(ceil($result / $messagesParPage));
+        if (isset($_GET['page'])) {
+            $pageActuelle = intval($_GET['page']);
+            if ($pageActuelle > $nombreDePages) {
+                $pageActuelle = $nombreDePages;
+            }
+        } else {
+            $pageActuelle = 1;
+        }
+        $premiereEntree = ($pageActuelle - 1) * $messagesParPage;
+        $retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);
+        $comments = $req->getComments($_GET['id'], $premiereEntree, $messagesParPage);
+        require('view/post.php');
+    }
+
+    /* ------------------ PAGE DES COMMENTAIRES-------------------- */
+
+    public function newComment()
+    {
+        if (!empty($_POST['pseudoComment']) && !empty($_POST['textComment'])) {
+            $check = new FrontEndController;
+            $req = new FrontEndManager;
+            $erreur = null;
+            $pseudoComment = $check->checkInput($_POST['pseudoComment']);
+            $textComment = $check->checkInput($_POST['textComment']);
+            $idPost = $check->checkInput($_POST['idPost']);
+            $comment = $req->postComment($_POST['textComment'], $_SESSION['userId'], $idPost);
+            $erreur = "code0";
+        } else {
+            $erreur = "code1";
+        }
+        header("Location: index.php?action=post&id=" . $_POST['idPost'] . "&erreur=" . $erreur . "#postComments");
+    }
+
+    public function signalComment()
+    {
+        $req = new FrontEndManager;
+        $check = new FrontEndController;
+        $check->checkInput($_POST['idSignal']);
+        $check->checkInput($_POST['idPost']);
+        $commentAlert = $req->signalComment($_POST["idSignal"]);
+        header("Location:index.php?action=post&id=" . $_POST['idPost']);
+    }
+
+    /* ----------------------------------------------------------------- */
+    /* --                     PAGE CONNEXION                          -- */
+    /* ----------------------------------------------------------------- */
 
     public function login()
     {
@@ -100,10 +127,9 @@ class FrontEndController
         require("view/formConnection.php");
     }
 
-    public function comeBackProfil()
-    {
-        header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
-    }
+    /* ----------------------------------------------------------------- */
+    /* --                    PAGE INSCRIPTION                         -- */
+    /* ----------------------------------------------------------------- */
 
     public function inscription()
     {
@@ -114,7 +140,6 @@ class FrontEndController
             $inputMail = $check->checkInput($_POST['inputMail']);
             $inputPassword = $check->checkInput($_POST['inputPassword']);
             $verifInputPassword = $check->checkInput($_POST['verifInputPassword']);
-
             $validation = "true";
             if (empty($_POST['inputPseudo']) || empty($_POST['inputMail']) || empty($_POST['inputPassword']) || empty($_POST['verifInputPassword'])) {
                 $validation = "false";
@@ -151,6 +176,10 @@ class FrontEndController
         require("view/formInscription.php");
     }
 
+    /* ----------------------------------------------------------------- */
+    /* --                     PAGE DU PROFIL                          -- */
+    /* ----------------------------------------------------------------- */
+
     public function homeProfil()
     {
         $req = new FrontEndManager;
@@ -160,7 +189,6 @@ class FrontEndController
         } else {
             throw new Exception("Cet id n'existe pas");
         }
-        
         require("view/homeProfil.php");
     }
 
@@ -194,6 +222,11 @@ class FrontEndController
         require("view/editProfil.php");
     }
 
+    public function comeBackProfil()
+    {
+        header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
+    }
+
     public function deconnectProfil()
     {
         session_start();
@@ -202,33 +235,14 @@ class FrontEndController
         header("Location: index.php?action=welcomeHome");
     }
 
-    public function newComment()
-    {
-        if (!empty($_POST['pseudoComment']) && !empty($_POST['textComment'])) {
-            $check = new FrontEndController;
-            $req = new FrontEndManager;
-            $erreur = null;
-            $pseudoComment = $check->checkInput($_POST['pseudoComment']);
-            $textComment = $check->checkInput($_POST['textComment']);
-            $idPost = $check->checkInput($_POST['idPost']);
-            $comment = $req->postComment($_POST['textComment'], $_SESSION['userId'], $idPost); 
-            $erreur = "code0";
-        } else {
-            $erreur = "code1";
-        }
-        header("Location: index.php?action=post&id=" . $_POST['idPost'] . "&erreur=" . $erreur . "#postComments");
-    }
-    public function signalComment()
-    {
-        $req = new FrontEndManager;
-        $commentAlert = $req->signalComment($_POST["idSignal"]);
-        header("Location:index.php?action=post&id=" . $_POST['idPost']);
-    }
+    /* ----------------------------------------------------------------- */
+    /* --                       PAGE ERREUR                           -- */
+    /* ----------------------------------------------------------------- */
 
-
-    public function error() {
-        //$_SESSION = array();
-        //session_destroy();
+    public function error()
+    {
+        $_SESSION = array();
+        session_destroy();
         $_GET["action"] = "error";
         require("view/error.php");
     }

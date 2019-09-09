@@ -15,8 +15,6 @@
                 <li class="nav-item"> <a class="nav-link" href="index.php?action=welcomeHome"> <i class="fas fa-home"></i> Accueil</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="index.php?action=listPosts"> <i class="fas fa-blog"></i> Blog </a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?action=contact"> <i class="far fa-address-book"></i> Contact
-                    </a></li>
             </ul>
             <?php
             if (isset($_SESSION['userId']) != true) {

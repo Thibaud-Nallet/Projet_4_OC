@@ -6,45 +6,52 @@ require("controller/BackEndController.php");
 
 $frontEnd = new FrontEndController;
 $backEnd = new BackEndController;
+
 try {
     if (isset($_GET["action"])) {
-        //Routeur nav_accueil & logo
+        /* ------------------------------------------------------- */
+        /* --                 PARTIE FRONT-END                  -- */
+        /* ------------------------------------------------------- */
         if ($_GET["action"] == "welcomeHome") {
             $frontEnd->welcomeHome();
-        }
-        //Routeur nav_blog
-        elseif ($_GET["action"] == "listPosts") {
+        } elseif ($_GET["action"] == "listPosts") {
             $frontEnd->listPosts();
-        }
-        //Routeur blog_bouton lire la suite
-        elseif ($_GET["action"] == "post") {
+        } elseif ($_GET["action"] == "post") {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $frontEnd->post();
             } else {
                 throw new Exception("Erreur : cette page n'existe pas");
             }
+        } elseif ($_GET["action"] == "newComment") {
+            $frontEnd->newComment();
         } elseif ($_GET["action"] == "signalComment") {
             $frontEnd->signalComment();
-        }
-        //Routeur nav_contact
-        elseif ($_GET["action"] == "contact") {
-            $frontEnd->contact();
-        }
-        //Routeur form_inscription
-        elseif ($_GET["action"] == "inscription") {
+            /* ------------------------------------------------------- */
+            /* --          PARTIE INSCRIPTION/CONNEXION             -- */
+            /* ------------------------------------------------------- */
+        } elseif ($_GET["action"] == "inscription") {
             $frontEnd->inscription();
-        }
-        //Routeur form_connection
-        elseif ($_GET["action"] == "login") {
+        } elseif ($_GET["action"] == "login") {
             $frontEnd->login();
-        }
-        //Routeur gestionProfil
-        elseif ($_GET["action"] == "homeProfil") {
+        } elseif ($_GET["action"] == "deconnectProfil") {
+            $frontEnd->deconnectProfil();
+        } elseif ($_GET["action"] == "homeProfil") {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $frontEnd->homeProfil();
             } else {
                 throw new Exception("Erreur : cette page n'existe pas");
             }
+        } elseif ($_GET["action"] == "editProfil") {
+            if (isset($_SESSION['userId']) && $_SESSION["userId"] > 0) {
+                $frontEnd->editProfil();
+            } else {
+                throw new Exception("Erreur : cette page n'existe pas");
+            }
+        } elseif ($_GET["action"] == "comeBackProfil") {
+            $frontEnd->comeBackProfil();
+            /* ------------------------------------------------------- */
+            /* --              PARTIE ADMIN - ACCUEIL               -- */
+            /* ------------------------------------------------------- */
         } elseif ($_GET["action"] == "homeProfilAdmin") {
             if (isset($_SESSION['userId']) && $_SESSION['userId'] > 0 && $_SESSION['statut'] == "admin") {
                 $backEnd->homeProfilAdmin();
@@ -53,78 +60,45 @@ try {
             }
         } elseif ($_GET["action"] == "comeBackProfilAdmin") {
             $backEnd->comeBackProfilAdmin();
-        }
-        //Routeur deconnection du profil
-        elseif ($_GET["action"] == "deconnectProfil") {
-            $frontEnd->deconnectProfil();
-        }
-        //Routeur edition du profil
-        elseif ($_GET["action"] == "editProfil") {
-            if (isset($_SESSION['userId']) && $_SESSION["userId"] > 0) {
-                $frontEnd->editProfil();
-            } else {
-                throw new Exception("Erreur : cette page n'existe pas");
-            }
-        }
-        //Routeur nouveau commentaire page post
-        elseif ($_GET["action"] == "newComment") {
-            $frontEnd->newComment();
-        }
-        //Routeur lien pour revenir à la page d'accueil admin
-        elseif ($_GET["action"] == "comeBackProfil") {
-            $frontEnd->comeBackProfil();
-        }
-        //Routeur afficher tous les articles
-        elseif ($_GET["action"] == "listPostAdmin") {
+            /* ------------------------------------------------------- */
+            /* --          PARTIE ADMIN - GESTION DES POSTS         -- */
+            /* ------------------------------------------------------- */
+        } elseif ($_GET["action"] == "listPostAdmin") {
             $backEnd->listPostAdmin();
-        }
-        //Routeur de la page pour modifier un article
-        elseif ($_GET["action"] == "editPostAdmin") {
+        } elseif ($_GET["action"] == "editPostAdmin") {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $backEnd->editPostAdmin();
             } else {
                 throw new Exception("Erreur : cette page n'existe pas");
             }
-        }
-        //Routeur qui edit le post
-        elseif ($_GET["action"] == "editPost") {
+        } elseif ($_GET["action"] == "editPost") {
             $backEnd->editPost();
-        }
-        //Routeur pour écrire un nouvel article
-        elseif ($_GET["action"] == "writePostAdmin") {
-            $backEnd->writePostAdmin();
-        }
-        //Routeur pour lister tous les commentaires 
-        elseif ($_GET["action"] == "listCommentsAdmin") {
-            $backEnd->listCommentsAdmin();
-        }
-        //Routeur pour la suppression d'un commentaires
-        elseif ($_GET["action"] == "deleteComments") {
-            $backEnd->deleteComments();
-        }
-        //Routeur pour la suppression d'un post et de tous ses commentaires
-        elseif ($_GET["action"] == "deletePostAdmin") {
+        } elseif ($_GET["action"] == "deletePostAdmin") {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $backEnd->deletePostAdmin();
             }
-        }
-        //Routeur pour l'action de la supression du post (page confirmation)
-        elseif ($_GET["action"] == "delete") {
+        } elseif ($_GET["action"] == "delete") {
+            //Page confirmation
             $backEnd->delete();
-        } 
-        // Sinon les actions ne sont pas connues envoye une erreur
-        else {
+            /* ------------------------------------------------------- */
+            /* --           PARTIE ADMIN - ECRIRE ARTICLE           -- */
+            /* ------------------------------------------------------- */
+        } elseif ($_GET["action"] == "writePostAdmin") {
+            $backEnd->writePostAdmin();
+            /* ------------------------------------------------------- */
+            /* --          PARTIE ADMIN - GESTION DES COMS          -- */
+            /* ------------------------------------------------------- */
+        } elseif ($_GET["action"] == "listCommentsAdmin") {
+            $backEnd->listCommentsAdmin();
+        } elseif ($_GET["action"] == "deleteComments") {
+            $backEnd->deleteComments();
+        } else {
             throw new Exception("Erreur : cette page n'existe pas");
         }
-    }
-    //Lancement de la page d'accueil si aucune action
-    else {
+    } else {
         $frontEnd->welcomeHome();
     }
-} //-- try --
-catch (Exception $e) {
+} catch (Exception $e) {
     $frontEnd->error();
     echo $e->getMessage();
 }
-
-//throw new Exception
