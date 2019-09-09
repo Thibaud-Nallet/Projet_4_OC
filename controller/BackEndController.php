@@ -13,15 +13,24 @@ class BackEndController
         return $data;
     }
 
+    /* ----------------------------------------------------------------- */
+    /* --                     PAGE D'ACCUEIL                          -- */
+    /* ----------------------------------------------------------------- */
+
     public function homeProfilAdmin()
     {
         require("view/homeAdmin.php");
     }
 
+    /* ---------------- REVENIR A LA PAGE D'ACCUEIL -------------------- */
     public function comeBackProfilAdmin()
     {
         header("Location: index.php?action=homeProfilAdmin");
     }
+
+    /* ----------------------------------------------------------------- */
+    /* --               LISTE DE TOUS LES ARTICLES                    -- */
+    /* ----------------------------------------------------------------- */
 
     public function listPostAdmin()
     {
@@ -30,36 +39,7 @@ class BackEndController
         require("view/listPostAdmin.php");
     }
 
-    public function listCommentsAdmin()
-    {
-        $req = new BackEndManager;
-        $check = new BackEndController;
-
-        $messagesParPage = 5;
-        $total = $req->totalComment(); //Donne le nombre total de commentaires : soit 13
-
-        $nombreDePages = ceil($total / $messagesParPage); //Donne le nombre de pages à créer : soit 3 
-
-        if (isset($_GET['page'])) // Si la variable $_GET['page'] existe...
-        {
-            $pageActuelle = intval($_GET['page']);
-
-            if ($pageActuelle > $nombreDePages) // Si la valeur de $pageActuelle (le numéro de la page) est plus grande que $nombreDePages...
-            {
-                $pageActuelle = $nombreDePages;
-            }
-        } else // Sinon
-        {
-            $pageActuelle = 1; // La page actuelle est la n°1    
-        }
-        $premiereEntree = ($pageActuelle - 1) * $messagesParPage; // On calcul la première entrée à lire
-
-        $pseudoCommentAdmin = $req->getCommentsAdmin($premiereEntree, $messagesParPage);
-        $titleCommentAdmin = $req->regetCommentsAdmin();
-
-        require("view/listCommentsAdmin.php");
-    }
-
+    /* --------------- SELECTIONNE LE POST DESIRE -------------------- */
     public function deletePostAdmin()
     {
         $req = new BackEndManager;
@@ -69,6 +49,7 @@ class BackEndController
         require("view/deletePostAdmin.php");
     }
 
+    /* ---------------- SUPPRIME LE POST DESIRE --------------------- */
     public function delete()
     {
         if (isset($_POST)) {
@@ -81,6 +62,7 @@ class BackEndController
         header("Location: index.php?action=listPostAdmin");
     }
 
+    /* --------------- EDITER LE POST DESIRE ----------------------- */
     public function editPostAdmin()
     {
         if (isset($_GET['id'])) {
@@ -98,16 +80,9 @@ class BackEndController
         require("view/editPost.php");
     }
 
-    public function deleteComments()
-    {
-        if (isset($_POST)) {
-            $req = new BackEndManager;
-            $check = new BackEndController;
-            $check->checkInput($_GET['id']);
-            $delete_comment = $req->deleteComment($_GET['id']);
-        }
-        header("Location: index.php?action=listCommentsAdmin");
-    }
+    /* ----------------------------------------------------------------- */
+    /* --               REDIGER UN NOUVEAU ARTICLE                    -- */
+    /* ----------------------------------------------------------------- */
 
     public function writePostAdmin()
     {
@@ -129,5 +104,43 @@ class BackEndController
             }
         }
         require("view/writePostAdmin.php");
+    }
+
+    /* ----------------------------------------------------------------- */
+    /* --             LISTE DE TOUS LES COMMENTAIRES                  -- */
+    /* ----------------------------------------------------------------- */
+
+    /* -------------- PAGINE ET LISTE LES COMMENTAIRES ------------------ */
+    public function listCommentsAdmin()
+    {
+        $req = new BackEndManager;
+        $check = new BackEndController;
+        $messagesParPage = 5;
+        $total = $req->totalComment();
+        $nombreDePages = ceil($total / $messagesParPage);
+        if (isset($_GET['page'])) {
+            $pageActuelle = intval($_GET['page']);
+            if ($pageActuelle > $nombreDePages) {
+                $pageActuelle = $nombreDePages;
+            }
+        } else {
+            $pageActuelle = 1;
+        }
+        $premiereEntree = ($pageActuelle - 1) * $messagesParPage;
+        $pseudoCommentAdmin = $req->getCommentsAdmin($premiereEntree, $messagesParPage);
+        $titleCommentAdmin = $req->regetCommentsAdmin();
+        require("view/listCommentsAdmin.php");
+    }
+
+    /* -------------- SUPPRIME UN COMMENTAIRE SIGNALE -------------------- */
+    public function deleteComments()
+    {
+        if (isset($_POST)) {
+            $req = new BackEndManager;
+            $check = new BackEndController;
+            $check->checkInput($_GET['id']);
+            $delete_comment = $req->deleteComment($_GET['id']);
+        }
+        header("Location: index.php?action=listCommentsAdmin");
     }
 }
