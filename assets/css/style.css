@@ -217,7 +217,7 @@ header h1 {
 footer {
     background-color: #e0e8ed;
     margin-top: 40px;
-   
+
 }
 
 footer h5 {
@@ -356,12 +356,14 @@ footer li a :hover {
     color: #d1b025;
 }
 
-.signaler {
+.signaler {
     border: 1px solid black;
 }
-.conteneurSignale{
+
+.conteneurSignale {
     padding-left: 60px;
 }
+
 .signale {
     border-radius: 5px;
     padding: 10px 20px;
@@ -384,7 +386,7 @@ footer li a :hover {
 
 #writeComments,
 #writeComments p {
-    border-radius : 10px;
+    border-radius: 10px;
     background-color: #d1b025;
     margin: 10px auto;
 }
@@ -588,6 +590,7 @@ footer li a :hover {
 #signalComments {
     border: 5px groove rgba(220, 20, 60);
     color: #18202d;
+     margin: 20px auto;
 }
 
 .effetArticle {
@@ -597,7 +600,6 @@ footer li a :hover {
 .effetIcone:hover {
     color: #18202d;
 }
-
 
 #test {
     border: 1px solid black;
@@ -609,19 +611,19 @@ footer li a :hover {
 }
 
 #error_header {
-    padding : 100px 0; 
+    padding: 100px 0;
 }
 
 .pagination {
     color: #e0e8ed;
 }
 
-.yellow{
-    color : #d1b025;
+.yellow {
+    color: #d1b025;
 }
 
-.yellow:hover{
-    color : #e0e8ed;
+.yellow:hover {
+    color: #e0e8ed;
 }
 
 .submitYellow {
@@ -641,14 +643,19 @@ footer li a :hover {
 #gestionArticleDelete {
     border: 1px solid #d1b025;
     background-color: #e0e8ed;
-   
     padding: 20px 20px;
 }
 
 #gestionArticleDelete a {
-    color : #e0e8ed;
-    
+    color: #e0e8ed;
 }
+
 #gestionArticleDelete a:hover {
     color: #d1b025;
+}
+
+#editArticle {
+    background-color: #e0e8ed;
+    margin: 20px auto;
+    padding-top: 20px;
 }

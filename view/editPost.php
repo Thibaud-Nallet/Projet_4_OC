@@ -9,7 +9,7 @@
     <h2> Editer l'article : <br /><br /> <span class="yellow"> <?= htmlspecialchars($postAdmin["title"]); ?> <span> </h2>
 
 
-    <div class="col-md-10 offset-md-1 text-left" id="gestionArticleDelete">
+    <div class="col-md-10 offset-md-1 text-left" id="editArticle">
         <form action="" method="post">
             <div class="error text-center">
                 <?php

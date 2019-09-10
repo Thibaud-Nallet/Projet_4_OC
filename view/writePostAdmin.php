@@ -1,7 +1,4 @@
-<?php $title = "Interface Admin | Ecrire un article";
-
-?>
-
+<?php $title = "Interface Admin | Ecrire un article"; ?>
 
 <?php ob_start(); ?>
 
@@ -11,7 +8,7 @@
 <section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
     <h2> Ecrivez un article </h2>
 
-    <div class="col-md-10 offset-md-1 text-left" id="gestionArticleDelete">
+    <div class="col-md-10 offset-md-1 text-left" id="editArticle">
         <form action="" method="post">
             <div class="error text-center">
                 <?php

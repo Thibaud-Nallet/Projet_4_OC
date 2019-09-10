@@ -101,7 +101,9 @@ class FrontEndController
     {
         if (!empty($_POST)) {
             $check = new FrontEndController;
-            $mailConnect = $check->checkInput($_POST['mailConnect']);
+            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['mailConnect'])) {
+                $mailConnect = $check->checkInput($_POST['mailConnect']);
+            }
             $mdpConnect = $check->checkInput($_POST['passwordConnect']);
             if (!empty($mailConnect) && !empty($mdpConnect)) {
                 $req = new FrontEndManager;
@@ -210,7 +212,9 @@ class FrontEndController
             }
             if (isset($_POST['input_NewMail']) and !empty($_POST['input_NewMail']) and $_POST['input_NewMail'] != $user['mail']) {
                 $newMail = $check->checkInput($_POST['input_NewMail']);
-                $insertMail = $req->upMail($_POST['input_NewMail'], $_SESSION['userId']);
+                if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['input_NewMail'])) {
+                    $insertMail = $req->upMail($_POST['input_NewMail'], $_SESSION['userId']);
+                }
                 header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
             }
             if (isset($_POST['input_NewPassword']) and !empty($_POST['input_NewPassword']) and isset($_POST['verifInput_NewPassword']) and !empty($_POST['verifInput_NewPassword'])) {
