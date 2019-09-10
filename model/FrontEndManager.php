@@ -46,7 +46,7 @@ class FrontEndManager extends Manager
     INNER JOIN user ON user.id = comments.id_user 
     WHERE id_post = ? 
     ORDER BY date_creation DESC
-     LIMIT ' . $premiereEntree . ', ' . $messagesParPage . '');
+    LIMIT ' . $premiereEntree . ', ' . $messagesParPage . '');
         $comments->execute(array($postId));
         return $comments;
     }
@@ -92,28 +92,28 @@ class FrontEndManager extends Manager
     /* --                      CONNEXION USER                         -- */
     /* ----------------------------------------------------------------- */
 
-    public function userConnect($mailConnect, $passwordConnect)
+    public function userConnect($mailConnect)
     {
         $bdd = $this->dbConnect();
-        $reqUser = $bdd->prepare("SELECT * FROM user WHERE email = ? AND pass = ?");
-        $reqUser->execute(array($mailConnect, $passwordConnect));
+        $reqUser = $bdd->prepare("SELECT * FROM user WHERE email = ?");
+        $reqUser->execute(array($mailConnect));
         return $reqUser;
     }
 
     /* ------------------ VERIF SI USER DANS BDD -------------------- */
-    public function checkUserDb($mailConnect, $passwordConnect)
+    public function checkUserDb($mailConnect)
     {
         $reqUserManager = new FrontEndManager;
-        $reqUser = $reqUserManager->userConnect($mailConnect, $passwordConnect);
+        $reqUser = $reqUserManager->userConnect($mailConnect);
         $userExist = $reqUser->rowCount();
         return $userExist;
     }
 
     /* --------------------- LANCE LA SESSION ----------------------- */
-    public function userConnected($mailConnect, $passwordConnect)
+    public function userConnected($mailConnect)
     {
         $reqUserManager = new FrontEndManager;
-        $reqUser = $reqUserManager->userConnect($mailConnect, $passwordConnect);
+        $reqUser = $reqUserManager->userConnect($mailConnect);
         $userInfo = $reqUser->fetch();
         return $userInfo;
     }

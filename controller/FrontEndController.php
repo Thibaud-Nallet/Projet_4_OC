@@ -105,17 +105,22 @@ class FrontEndController
             $mdpConnect = $check->checkInput($_POST['passwordConnect']);
             if (!empty($mailConnect) && !empty($mdpConnect)) {
                 $req = new FrontEndManager;
-                $userExist = $req->checkUserDb($_POST["mailConnect"], $_POST["passwordConnect"]);
+                $userExist = $req->checkUserDb($_POST["mailConnect"]);
                 if ($userExist == 1) {
-                    $userInfo = $req->userConnected($_POST["mailConnect"], $_POST["passwordConnect"]);
-                    $_SESSION['userId'] = $userInfo['id'];
-                    $_SESSION['pseudo'] = $userInfo['pseudo'];
-                    $_SESSION['email'] = $userInfo['email'];
-                    $_SESSION['statut'] = $userInfo['statut'];
-                    if ($_SESSION['statut'] == "admin") {
-                        header("Location: index.php?action=homeProfilAdmin");
-                    } else {
-                        header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
+                    $userInfo = $req->userConnected($_POST["mailConnect"]);
+                    if(password_verify($_POST["passwordConnect"], $userInfo['pass'])){
+                        $_SESSION['userId'] = $userInfo['id'];
+                        $_SESSION['pseudo'] = $userInfo['pseudo'];
+                        $_SESSION['email'] = $userInfo['email'];
+                        $_SESSION['statut'] = $userInfo['statut'];
+                        if ($_SESSION['statut'] == "admin") {
+                            header("Location: index.php?action=homeProfilAdmin");
+                        } else {
+                            header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
+                        }
+                    }
+                    else{
+                        $erreur = "Echec de l'authentification";
                     }
                 } else {
                     $erreur = "Echec de l'authentification";
@@ -163,7 +168,7 @@ class FrontEndController
                     $req = new FrontEndManager;
                     $mailexist = $req->verifMailDb($_POST["inputMail"]);
                     if ($mailexist == 0) {
-                        $insertMember = $req->insertUserDb($_POST["inputPseudo"], $_POST["inputMail"], $_POST["inputPassword"]);
+                        $insertMember = $req->insertUserDb($_POST["inputPseudo"], $_POST["inputMail"], password_hash($_POST["inputPassword"], PASSWORD_DEFAULT));
                         $erreur = "Votre compte a bien été créé !";
                         // redirection vers la page de connexion
                         header('Location: index.php?action=login');
@@ -212,7 +217,7 @@ class FrontEndController
                 $input_NewPassword = $check->checkInput($_POST['input_NewPassword']);
                 $verifInput_NewPassword = $check->checkInput($_POST['verifInput_NewPassword']);
                 if ($input_NewPassword == $verifInput_NewPassword) {
-                    $insertPassword = $req->upPassword($_POST['input_NewPassword'], $_SESSION['userId']);
+                    $insertPassword = $req->upPassword(password_hash($_POST["input_NewPassword"], PASSWORD_DEFAULT), $_SESSION['userId']);
                     header("Location: index.php?action=homeProfil&id=" . $_SESSION['userId']);
                 } else {
                     $erreur = "Vos deux mdp ne correspondent pas !";

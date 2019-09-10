@@ -128,7 +128,6 @@ class BackEndController
         }
         $premiereEntree = ($pageActuelle - 1) * $messagesParPage;
         $pseudoCommentAdmin = $req->getCommentsAdmin($premiereEntree, $messagesParPage);
-        $titleCommentAdmin = $req->regetCommentsAdmin();
         require("view/listCommentsAdmin.php");
     }
 

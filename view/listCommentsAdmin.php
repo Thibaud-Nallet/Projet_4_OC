@@ -31,12 +31,12 @@
     </article>
 
     <?php
-    while($comments = $pseudoCommentAdmin->fetch() and $comment = $titleCommentAdmin->fetch()) {
-        if($comment['alert'] ==  "true") {  ?>
+    while($comments = $pseudoCommentAdmin->fetch()) {
+        if($comments['alert'] ==  "true") {  ?>
             <article class="signalComments" id="signalComments">
                 <div class="row" id="ligneArticle">
                     <div class="col-md-2 effetArticle">
-                        <p> <?= htmlspecialchars($comment['title']); ?> </p>
+                        <p> <?= htmlspecialchars($comments['title']); ?> </p>
                     </div>
                     <div class="col-md-2 effetArticle">
                         <p> <?= htmlspecialchars($comments['pseudo']); ?> </p>
@@ -56,7 +56,7 @@
             <article id="gestionArticle">
                 <div class="row" id="ligneArticle">
                     <div class="col-md-2  effetArticle">
-                        <p> <?= htmlspecialchars($comment['title']); ?> </p>
+                        <p> <?= htmlspecialchars($comments['title']); ?> </p>
                     </div>
                     <div class="col-md-2 effetArticle">
                         <p> <?= htmlspecialchars($comments['pseudo']); ?> </p>
