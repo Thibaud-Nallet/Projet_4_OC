@@ -19,7 +19,7 @@ class BackEndController
 
     public function homeProfilAdmin()
     {
-        require("view/homeAdmin.php");
+        require("view/backend/admin/homeAdmin.php");
     }
 
     /* ---------------- REVENIR A LA PAGE D'ACCUEIL -------------------- */
@@ -36,7 +36,7 @@ class BackEndController
     {
         $req = new BackEndManager;
         $postsAdmin = $req->getPostsAdmin();
-        require("view/listPostAdmin.php");
+        require("view/backend/post/listPostAdmin.php");
     }
 
     /* --------------- SELECTIONNE LE POST DESIRE -------------------- */
@@ -46,7 +46,7 @@ class BackEndController
         $check = new BackEndController;
         $check->checkInput($_GET['id']);
         $postAdmin = $req->getPostAdmin($_GET["id"]);
-        require("view/deletePostAdmin.php");
+        require("view/backend/post/deletePostAdmin.php");
     }
 
     /* ---------------- SUPPRIME LE POST DESIRE --------------------- */
@@ -77,7 +77,7 @@ class BackEndController
             }
         }
         $postAdmin = $req->getPostAdmin($_GET["id"]);
-        require("view/editPost.php");
+        require("view/backend/post/editPost.php");
     }
 
     /* ----------------------------------------------------------------- */
@@ -103,7 +103,7 @@ class BackEndController
                 $erreur = "Il faut un titre";
             }
         }
-        require("view/writePostAdmin.php");
+        require("view/backend/post/writePostAdmin.php");
     }
 
     /* ----------------------------------------------------------------- */
@@ -128,7 +128,7 @@ class BackEndController
         }
         $premiereEntree = ($pageActuelle - 1) * $messagesParPage;
         $pseudoCommentAdmin = $req->getCommentsAdmin($premiereEntree, $messagesParPage);
-        require("view/listCommentsAdmin.php");
+        require("view/backend/comment/listCommentsAdmin.php");
     }
 
     /* -------------- SUPPRIME UN COMMENTAIRE SIGNALE -------------------- */

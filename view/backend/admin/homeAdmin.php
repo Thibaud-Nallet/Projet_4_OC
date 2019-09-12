@@ -2,7 +2,7 @@
 
 <?php ob_start() ?>
 
-<?php include("includes/navigation.php") ?>
+<?php include("./view/includes/navigation.php") ?>
 
 <!--******** LISTE DES ARTICLES ********-->
 <section class="col-md-10 offset-md-1" id="interfaceAdmin">
@@ -38,4 +38,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require("includes/template.php"); ?>
+<?php require("./view/includes/template.php"); ?>

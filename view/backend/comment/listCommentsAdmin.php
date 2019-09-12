@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<?php include("includes/navigation.php"); ?>
+<?php include("./view/includes/navigation.php"); ?>
 
 <!--******** INTERFACE ADMIN ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
@@ -117,4 +117,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require("includes/template.php"); ?>
+<?php require("./view/includes/template.php"); ?>
