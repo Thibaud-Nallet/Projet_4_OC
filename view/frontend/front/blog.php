@@ -4,7 +4,7 @@
 
 <!--******** FOND DE PAGE ********-->
 <div id="blockPage">
-    <?php include("includes/navigation.php") ?>
+    <?php include("./view/includes/navigation.php") ?>
     <!--******** HEADER ********-->
     <header>
         <h1 class="titleBlog"> <span id="novelTitle"> Billet simple pour l'Alaska </span></h1>
@@ -42,10 +42,10 @@
         ?>
     </section>
 
-    <?php include("includes/footer.php") ?>
+    <?php include("./view/includes/footer.php") ?>
 
 </div>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require("includes/template.php"); ?>
+<?php require("./view/includes/template.php"); ?>

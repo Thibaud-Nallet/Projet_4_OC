@@ -19,7 +19,7 @@ class FrontEndController
 
     public function welcomeHome()
     {
-        require('view/home.php');
+        require('view/frontend/front/home.php');
     }
 
     /* ----------------------------------------------------------------- */
@@ -30,7 +30,7 @@ class FrontEndController
     {
         $req = new FrontEndManager;
         $posts = $req->getPosts();
-        require('view/blog.php');
+        require('view/frontend/front/blog.php');
     }
 
     /* ------------------ PAGE ARTICLE SELECTIONNE -------------------- */
@@ -61,7 +61,7 @@ class FrontEndController
         $premiereEntree = ($pageActuelle - 1) * $messagesParPage;
         $retour_messages = $req->retourMessages($premiereEntree, $messagesParPage);
         $comments = $req->getComments($_GET['id'], $premiereEntree, $messagesParPage);
-        require('view/post.php');
+        require('view/frontend/front/post.php');
     }
 
     /* ------------------ PAGE DES COMMENTAIRES-------------------- */
@@ -93,6 +93,17 @@ class FrontEndController
         header("Location:index.php?action=post&id=" . $_POST['idPost']);
     }
 
+    /* ----------------------------------------------------------------- */
+    /* --                       PAGE ERREUR                           -- */
+    /* ----------------------------------------------------------------- */
+
+    public function error()
+    {
+        $_SESSION = array();
+        session_destroy();
+        $_GET["action"] = "error";
+        require("view/frontend/front/error.php");
+    }
     /* ----------------------------------------------------------------- */
     /* --                     PAGE CONNEXION                          -- */
     /* ----------------------------------------------------------------- */
@@ -131,7 +142,7 @@ class FrontEndController
                 $erreur = "Tous les champs doivent être remplis";
             }
         }
-        require("view/formConnection.php");
+        require("view/frontend/connect/formConnection.php");
     }
 
     /* ----------------------------------------------------------------- */
@@ -180,7 +191,7 @@ class FrontEndController
                 }
             }
         }
-        require("view/formInscription.php");
+        require("view/frontend/connect/formInscription.php");
     }
 
     /* ----------------------------------------------------------------- */
@@ -196,7 +207,7 @@ class FrontEndController
         } else {
             throw new Exception("Cet id n'existe pas");
         }
-        require("view/homeProfil.php");
+        require("view/frontend/user/homeProfil.php");
     }
 
     public function editProfil()
@@ -228,7 +239,7 @@ class FrontEndController
                 }
             }
         }
-        require("view/editProfil.php");
+        require("view/frontend/user/editProfil.php");
     }
 
     public function comeBackProfil()
@@ -242,17 +253,5 @@ class FrontEndController
         $_SESSION = array();
         session_destroy();
         header("Location: index.php?action=welcomeHome");
-    }
-
-    /* ----------------------------------------------------------------- */
-    /* --                       PAGE ERREUR                           -- */
-    /* ----------------------------------------------------------------- */
-
-    public function error()
-    {
-        $_SESSION = array();
-        session_destroy();
-        $_GET["action"] = "error";
-        require("view/error.php");
-    }
+    }  
 }

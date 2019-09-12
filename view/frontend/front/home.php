@@ -5,7 +5,7 @@
 <!--******** FOND DE PAGE ********-->
 <div id="blockPage">
     <!--******** NAVBAR ********-->
-    <?php include("includes/navigation.php"); ?>
+    <?php include("./view/includes/navigation.php"); ?>
     <!--******** HEADER ********-->
     <header>
         <div class="container">
@@ -114,11 +114,11 @@
         </div>
     </section>
     <!--******** FOOTER ********-->
-    <?php include("includes/footer.php") ?>
+    <?php include("./view/includes/footer.php") ?>
     <!--Fin div blocPage-->
 </div>
 
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('includes/template.php'); ?>
+<?php require('./view/includes/template.php'); ?>

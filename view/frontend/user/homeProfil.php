@@ -4,7 +4,7 @@
 
 <!--******** FOND DE PAGE ********-->
 
-<?php include("includes/navigation.php") ?>
+<?php include("./view/includes/navigation.php") ?>
 
 <!--******** PROFIL ********-->
 <section class="col-lg-6 offset-lg-3" id="infoProfil">
@@ -24,6 +24,8 @@
 
 </section>
 
+<?php include("./view/includes/footer.php"); ?>
+
 <?php $content = ob_get_clean(); ?>
 
-<?php require("includes/template.php"); ?>
+<?php require("./view/includes/template.php"); ?>

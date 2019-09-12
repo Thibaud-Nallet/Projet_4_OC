@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div id="blockPage">
-    <?php include("includes/navigation.php"); ?>
+    <?php include("./view/includes/navigation.php"); ?>
     <section class="col-lg-4 offset-lg-8" id="connect">
         <h3> Connexion </h3>
         <div class="error text-center">
@@ -32,9 +32,9 @@
             </div>
         </form>
     </section>
-    <?php include("includes/footer.php"); ?>
+    <?php include("./view/includes/footer.php"); ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require("includes/template.php"); ?>
+<?php require("./view/includes/template.php"); ?>

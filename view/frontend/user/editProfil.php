@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<?php include("includes/navigation.php"); ?>
+<?php include("./view/includes/navigation.php"); ?>
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfil"><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-lg-6 offset-lg-6" id="connect">
     <h3> Editez votre profil </h3>
@@ -37,8 +37,8 @@
     </div>
 </section>
 
-<?php include("includes/footer.php"); ?>
+<?php include("./view/includes/footer.php"); ?>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require("includes/template.php"); ?>
+<?php require("./view/includes/template.php"); ?>
