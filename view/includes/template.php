@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <!-- Style sheet Perso -->
-    <link rel="stylesheet" href="/Projet_4_OC/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <!--***** TITLE *****-->
     <title> <?= $title ?> </title>
     
