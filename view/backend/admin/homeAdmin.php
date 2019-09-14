@@ -4,7 +4,7 @@
 
 <?php include("./view/includes/navigation.php") ?>
 
-<!--******** LISTE DES ARTICLES ********-->
+<!--******** LIST OF ARTICLES ********-->
 <section class="col-md-10 offset-md-1" id="interfaceAdmin">
     <h2> Bienvenue sur l'interface administrateur</h2>
     <p class="whiteText"> De cette page, vous pouvez voir la liste des articles publiés, modifier un article, publier un nouvel

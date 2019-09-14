@@ -3,12 +3,10 @@
 <?php ob_start(); ?>
 
 <?php include("./view/includes/navigation.php"); ?>
-<!--******** INTERFACE ADMIN ********-->
+<!--******** POST ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
     <h2> Liste des articles </h2>
-
-
     <article id="gestionArticle">
         <div class="row" id="ligneArticle">
             <div class="col-md-1 offset-md-1 effetArticle">
@@ -31,8 +29,6 @@
             </div>
         </div>
     </article>
-
-
     <?php
     while ($article = $postsAdmin->fetch()) { ?>
         <article id="gestionArticle">
@@ -57,10 +53,9 @@
                 </div>
             </div>
         </article>
-    <?php }
-    $postsAdmin->closeCursor();
-    ?>
+    <?php } ?>
 </section>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require("./view/includes/template.php"); ?>

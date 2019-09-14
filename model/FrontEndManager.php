@@ -7,7 +7,6 @@ class FrontEndManager extends Manager
     /* ----------------------------------------------------------------- */
     /* --                     PAGE BLOG + POST                        -- */
     /* ----------------------------------------------------------------- */
-
     public function getPosts()
     {
         $bdd = $this->dbConnect();
@@ -83,7 +82,7 @@ class FrontEndManager extends Manager
     public function signalComment($idSignal)
     {
         $bdd = $this->dbConnect();
-        $signalAlert = $bdd->prepare('UPDATE comments SET alert = "true" WHERE id = ?');
+        $signalAlert = $bdd->prepare('UPDATE comments SET alert = 1 WHERE id = ?');
         $signalAlert->execute(array($idSignal));
         return $signalAlert;
     }
@@ -91,7 +90,6 @@ class FrontEndManager extends Manager
     /* ----------------------------------------------------------------- */
     /* --                      CONNEXION USER                         -- */
     /* ----------------------------------------------------------------- */
-
     public function userConnect($mailConnect)
     {
         $bdd = $this->dbConnect();
@@ -170,7 +168,6 @@ class FrontEndManager extends Manager
     /* ----------------------------------------------------------------- */
     /* --                  PAGE EDITION DE PROFIL                     -- */
     /* ----------------------------------------------------------------- */
-
     public function checkUser($userId)
     {
         $bdd = $this->dbConnect();

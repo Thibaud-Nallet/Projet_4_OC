@@ -1,16 +1,16 @@
 <div id="navigation">
     <!--Navigation Bootstrap-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="backgroundNavbar">
-        <!-- Avec logo -->
+        <!-- With logo -->
         <a class="navbar-brand" href="index.php?action=welcomeHome"> <span class="textLogo"> Jean </span> <br /> <span class="textLogo">
                 FORTEROCHE </span> </a>
-        <!-- Bouton responsive -->
+        <!-- Button responsive -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"> <i class="fas fa-bars"></i> </span>
         </button>
-        <!-- Conteneur des liens -->
+        <!-- Container links -->
         <div class="collapse navbar-collapse" id="mainNav">
-            <!-- Liens -->
+            <!-- Links -->
             <ul class="navbar-nav nav-tabs">
                 <li class="nav-item"> <a class="nav-link" href="index.php?action=welcomeHome"> <i class="fas fa-home"></i> Accueil</a>
                 </li>

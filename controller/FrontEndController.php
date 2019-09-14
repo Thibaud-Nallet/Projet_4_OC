@@ -16,7 +16,6 @@ class FrontEndController
     /* ----------------------------------------------------------------- */
     /* --                     PAGE D'ACCUEIL                          -- */
     /* ----------------------------------------------------------------- */
-
     public function welcomeHome()
     {
         require('view/frontend/front/home.php');
@@ -25,7 +24,6 @@ class FrontEndController
     /* ----------------------------------------------------------------- */
     /* --                     PAGE DU BLOG                            -- */
     /* ----------------------------------------------------------------- */
-
     public function listPosts()
     {
         $req = new FrontEndManager;
@@ -34,7 +32,6 @@ class FrontEndController
     }
 
     /* ------------------ PAGE ARTICLE SELECTIONNE -------------------- */
-
     public function post()
     {
         $req = new FrontEndManager;
@@ -65,7 +62,6 @@ class FrontEndController
     }
 
     /* ------------------ PAGE DES COMMENTAIRES-------------------- */
-
     public function newComment()
     {
         if (!empty($_POST['pseudoComment']) && !empty($_POST['textComment'])) {
@@ -96,7 +92,6 @@ class FrontEndController
     /* ----------------------------------------------------------------- */
     /* --                       PAGE ERREUR                           -- */
     /* ----------------------------------------------------------------- */
-
     public function error()
     {
         $_SESSION = array();
@@ -107,7 +102,6 @@ class FrontEndController
     /* ----------------------------------------------------------------- */
     /* --                     PAGE CONNEXION                          -- */
     /* ----------------------------------------------------------------- */
-
     public function login()
     {
         if (!empty($_POST)) {
@@ -148,7 +142,6 @@ class FrontEndController
     /* ----------------------------------------------------------------- */
     /* --                    PAGE INSCRIPTION                         -- */
     /* ----------------------------------------------------------------- */
-
     public function inscription()
     {
         if (!empty($_POST)) {
@@ -197,7 +190,6 @@ class FrontEndController
     /* ----------------------------------------------------------------- */
     /* --                     PAGE DU PROFIL                          -- */
     /* ----------------------------------------------------------------- */
-
     public function homeProfil()
     {
         $req = new FrontEndManager;

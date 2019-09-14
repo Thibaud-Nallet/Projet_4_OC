@@ -5,11 +5,10 @@ $title = "Article | Billet simple pour l'Alaska";
 
 <?php ob_start(); ?>
 
-<!--******** FOND DE PAGE ********-->
+<!--******** BACKGROUND ********-->
 <div id="blockPage">
-    <!--******** NAVBAR ********-->
     <?php include("./view/includes/navigation.php"); ?>
-
+    <!--******** REGISTRATION FORM ********-->
     <section class="col-lg-6 offset-lg-6" id="connect">
         <h3> Inscrivez-vous </h3>
         <div class="error text-center">
@@ -48,15 +47,12 @@ $title = "Article | Billet simple pour l'Alaska";
                 <p> Déjà inscrit ? </p> <a href='index.php?action=login'> Me connecter !</a>
             </div>
         </form>
-
     </section>
-
 
     <!--******** FOOTER ********-->
     <?php include("./view/includes/footer.php") ?>
     <!--Fin div blocPage-->
 </div>
-
 
 <?php $content = ob_get_clean(); ?>
 

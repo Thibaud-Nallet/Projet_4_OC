@@ -4,12 +4,10 @@
 
 <?php include("./view/includes/navigation.php"); ?>
 
-<!--******** INTERFACE ADMIN ********-->
+<!--******** ADMIN INTERFACE ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-md-12" id="interfaceAdmin" id="test">
     <h2> Liste des commentaires </h2>
-
-
     <article id="gestionArticle">
         <div class="row" id="ligneArticle">
             <div class="col-md-2 effetArticle">
@@ -29,10 +27,9 @@
             </div>
         </div>
     </article>
-
     <?php
-    while($comments = $pseudoCommentAdmin->fetch()) {
-        if($comments['alert'] ==  "true") {  ?>
+    while ($comments = $pseudoCommentAdmin->fetch()) {
+        if ($comments['alert'] ==  1) {  ?>
             <article class="signalComments" id="signalComments">
                 <div class="row" id="ligneArticle">
                     <div class="col-md-2 effetArticle">
@@ -88,31 +85,6 @@
             </p>
         </div>
     </div>
-    <!--
-    <article class="signalComments" id="gestionArticle">
-        <div class="row" id="ligneArticle">
-            <div class="col-md-1 offset-md-1 effetArticle">
-                <p> 2 </p>
-            </div>
-            <div class="col-md-2 effetArticle">
-                <p> Article signalé </p>
-            </div>
-            <div class="col-md-2 effetArticle">
-                <p> 19 juin 2019 </p>
-            </div>
-            <div class="col-md-4 effetArticle text-justify">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do
-                    eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat</p>
-            </div>
-            <div class="col-md-1">
-                <a href="#"><i class="far fa-eye-slash fa-2x effetIcone signalComments"></i> </a>
-            </div>
-        </div>
-    </article>
-    -->
 </section>
 
 <?php $content = ob_get_clean(); ?>

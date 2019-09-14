@@ -10,17 +10,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <link rel="icon" type="image/png" href="#" />
     <!--***** LINK *****-->
-    <!-- Feuille de style Material Design -->
+    <!-- Style sheet Material Design -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <!-- Feuille de style Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <!-- Feuille de style Google Font -->
+    <!-- Style sheet Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- Feuille de style Perso -->
+    <!-- Style sheet Perso -->
     <link rel="stylesheet" href="/Projet_4_OC/assets/css/style.css">
     <!--***** TITLE *****-->
     <title> <?= $title ?> </title>
@@ -32,7 +32,7 @@
 </body>
 
 <!--***** SCRIPT *****-->
-<!-- Script utilisation Material Design -->
+<!-- Script Material Design -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
 </script>
@@ -50,7 +50,7 @@
         language: 'fr',
     });
 </script>
-<!-- Fichier js -->
+<!-- File js -->
 <script <?= $script ?>> </script>
 </body>
 

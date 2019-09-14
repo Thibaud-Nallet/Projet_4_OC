@@ -2,11 +2,11 @@
 
 <?php ob_start(); ?>
 
-<!--******** FOND DE PAGE ********-->
+<!--******** BACKGROUND ********-->
 <div id="blockPage">
-    <!--******** NAVBAR ********-->
     <?php include("./view/includes/navigation.php"); ?>
 
+    <!--******** ERROR PAGE ********-->
     <header id="error_header">
         <div class="container">
             <div class="row">
@@ -26,7 +26,6 @@
 
     <!--******** FOOTER ********-->
     <?php include("./view/includes/footer.php") ?>
-
     <!--Fin div blocPage-->
 </div>
 

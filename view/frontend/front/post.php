@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<!--******** FOND DE PAGE ********-->
+<!--******** BACKGROUND ********-->
 <div id="blockPage">
     <!--******** NAVBAR ********-->
     <?php include("./view/includes/navigation.php"); ?>
@@ -11,7 +11,7 @@
         <h1 class="titleBlog"> <span id="novelTitle"> Billet simple pour l'Alaska </span></h1>
         <h2 class="titleBlog"> <?= htmlspecialchars($post["title"]); ?> </h2>
     </header>
-    <!--******** PRESENTATION DU POST CLIQUE ********-->
+    <!--******** PRESENTATION OF POST CLICK ********-->
     <section class="container" id="presentationPost">
         <div class="row">
             <article class="post">
@@ -20,7 +20,7 @@
             </article>
         </div>
     </section>
-    <!--******** POSTER DES COMMENTAIRES ********-->
+    <!--******** POSTER COMMENTS ********-->
     <?php if (isset($_SESSION['userId']) == true) { ?>
         <section class="col-lg-8 offset-lg-2" id="postComments">
             <div class="row">
@@ -68,7 +68,7 @@
                 </div>
         </section>
     <?php } ?>
-    <!--******** PRESENTATION DES COMMENTAIRES ********-->
+    <!--******** PRESENTATION COMMENTS ********-->
     <section class="col-lg-8 offset-lg-2" id="comments">
         <div class="col-lg-12 text-center">
             <h3> Commentaires </h3>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <?php if ($comment["alert"] == "true") { ?>
+                    <?php if ($comment["alert"] == 1) { ?>
                         <div class="col-lg-12">
                             <p style="color:gray;"> Article signalé, en attente de modération </p>
                         </div>
@@ -95,7 +95,6 @@
             <?php } else { ?>
                 <form action="index.php?action=signalComment" method="post">
                     <div class="row">
-
                         <div class="col-lg-5" style="visibility:hidden">
                             <input id="idPost" type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
                         </div>
@@ -129,7 +128,7 @@
         </div>
     </section>
 
-    <!--******** INSCRIPTION SI NON CONNECTE ********-->
+    <!--******** REGISTRATION IF NOT CONNECTED ********-->
     <?php if (isset($_SESSION['userId']) != true) { ?>
         <section class="col-lg-8 offset-lg-2" id="postComments">
             <div class="row">

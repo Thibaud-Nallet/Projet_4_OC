@@ -2,7 +2,7 @@
 
 <?php ob_start() ?>
 
-<!--******** FOND DE PAGE ********-->
+<!--******** BACKGROUND ********-->
 <div id="blockPage">
     <?php include("./view/includes/navigation.php") ?>
     <!--******** HEADER ********-->
@@ -10,7 +10,7 @@
         <h1 class="titleBlog"> <span id="novelTitle"> Billet simple pour l'Alaska </span></h1>
         <h2 class="titleBlog"> Les chapitres </h2>
     </header>
-    <!--******** PRESENTATION DU ROMAN ********-->
+    <!--******** PRESENTATION OF THE ROMAN ********-->
     <section class="container" id="presentationRoman">
         <div class="row">
             <p class="text-center textBlog"> Retrouvez l'ensemble des chapitres qui compose le roman " Billet
@@ -26,7 +26,7 @@
             <p class="text-center textBlog"> A suivre ! </p>
         </div>
     </section>
-    <!--******** PRESENTATION DE LA LISTE DES POSTS ********-->
+    <!--******** PRESENTATION POST LIST  ********-->
     <section class="container" id="listPostBlog">
         <hr>
         <?php
@@ -43,7 +43,6 @@
     </section>
 
     <?php include("./view/includes/footer.php") ?>
-
 </div>
 
 <?php $content = ob_get_clean(); ?>

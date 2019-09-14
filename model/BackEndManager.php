@@ -83,16 +83,6 @@ class BackEndManager extends Manager
         return $pseudoCommentAdmin;
     }
 
-    /* ------------- REQUETE POUR LE 2 INNERJOIN --------------------- 
-    public function regetCommentsAdmin()
-    {
-        $bdd = $this->dbConnect();
-        $titleCommentAdmin = $bdd->query('SELECT title, id_post, alert
-            FROM comments
-            INNER JOIN post ON post.id = comments.id_post');
-        return $titleCommentAdmin;
-    }*/
-
     /* --------------- TOTAL POUR LA PAGINATION --------------------- */
     public function totalComment()
     {
@@ -110,7 +100,7 @@ class BackEndManager extends Manager
         return $retour_messages;
     }
 
- /* -------------- SUPPRESSION DU COMMENTAIRE DESIRE ------------------ */
+    /* -------------- SUPPRESSION DU COMMENTAIRE DESIRE ------------------ */
     public function deleteComment($id)
     {
         $bdd = $this->dbConnect();

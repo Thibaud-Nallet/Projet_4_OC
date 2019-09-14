@@ -2,26 +2,21 @@
 
 <?php ob_start() ?>
 
-<!--******** FOND DE PAGE ********-->
-
+<!--******** BACKGROUND ********-->
 <?php include("./view/includes/navigation.php") ?>
 
-<!--******** PROFIL ********-->
+<!--******** HOME PROFIL ********-->
 <section class="col-lg-6 offset-lg-3" id="infoProfil">
     <h2> Profil de <?= $userInfo['pseudo'] ?> </h2>
     <p> Email : <?= $userInfo['email'] ?> </p>
     <p> Date d'inscription : <?= $userInfo['date_inscription'] ?> </p>
     <p> Statut : <?= $userInfo['statut'] ?> </p>
-
     <?php
     //Sécurité qu'on ne puisse editer que son profil en changeant l'url
     if (isset($_SESSION['userId']) and $userInfo['id'] == $_SESSION['userId']) {
         ?>
         <p> <a href="index.php?action=editProfil"> Editer mon profil </a></p>
-    <?php
-    }
-    ?>
-
+    <?php } ?>
 </section>
 
 <?php include("./view/includes/footer.php"); ?>

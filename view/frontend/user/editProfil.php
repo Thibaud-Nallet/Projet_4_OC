@@ -3,6 +3,8 @@
 <?php ob_start(); ?>
 
 <?php include("./view/includes/navigation.php"); ?>
+
+<!--******** EDIT FORM ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfil"><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-lg-6 offset-lg-6" id="connect">
     <h3> Editez votre profil </h3>

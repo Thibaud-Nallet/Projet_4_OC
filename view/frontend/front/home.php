@@ -2,10 +2,10 @@
 
 <?php ob_start(); ?>
 
-<!--******** FOND DE PAGE ********-->
+<!--******** BACKGROUND ********-->
 <div id="blockPage">
-    <!--******** NAVBAR ********-->
     <?php include("./view/includes/navigation.php"); ?>
+
     <!--******** HEADER ********-->
     <header>
         <div class="container">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </section>
-    <!--******** PRESENTATION BLOG ********-->
+    <!--******** BLOG PRESENTATION ********-->
     <section id="whyBlog">
         <div class="container" id="blogProject">
             <div class="row">

@@ -16,7 +16,6 @@ class BackEndController
     /* ----------------------------------------------------------------- */
     /* --                     PAGE D'ACCUEIL                          -- */
     /* ----------------------------------------------------------------- */
-
     public function homeProfilAdmin()
     {
         require("view/backend/admin/homeAdmin.php");
@@ -31,7 +30,6 @@ class BackEndController
     /* ----------------------------------------------------------------- */
     /* --               LISTE DE TOUS LES ARTICLES                    -- */
     /* ----------------------------------------------------------------- */
-
     public function listPostAdmin()
     {
         $req = new BackEndManager;
@@ -83,7 +81,6 @@ class BackEndController
     /* ----------------------------------------------------------------- */
     /* --               REDIGER UN NOUVEAU ARTICLE                    -- */
     /* ----------------------------------------------------------------- */
-
     public function writePostAdmin()
     {
         if (!empty($_POST)) {
