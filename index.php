@@ -100,5 +100,4 @@ try {
     }
 } catch (Exception $e) {
     $frontEnd->error();
-    echo $e->getMessage();
 }

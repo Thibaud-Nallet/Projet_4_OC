@@ -11,24 +11,23 @@
         <h2 class="titleBlog"> Les chapitres </h2>
     </header>
     <!--******** PRESENTATION OF THE ROMAN ********-->
-    <section class="container" id="presentationRoman">
+    <div class="container" id="presentationRoman">
         <div class="row">
-            <h6 class="text-center textBlog"> Retrouvez l'ensemble des chapitres qui compose le roman " Billet
-                simple pour l'Alaska", par ordre de publication.</h6>
+            <p class="text-center textBlog"> Retrouvez l'ensemble des chapitres qui compose le roman " Billet
+                simple pour l'Alaska", par ordre de publication.</p>
         </div>
         <div class="row">
-            <h6 class="text-center textBlog"> <span class="resume"> Le résumé :  </span> <br /> 1919. <br /> Guy est une jeune policier à l’aube de sa carrière.<br />
+            <p class="text-center textBlog"> <span class="resume"> Le résumé : </span> <br /> 1919. <br /> Guy est une jeune policier à l’aube de sa carrière.<br />
                 Harry, son partenaire et confident, est arrivé depuis peu en Alaska. <br /> Tout bascule le jour où ils se retrouvent embarquées
                 dans une sombre affaire : le meurtre de l’infirmière Carrie A. Nelson à bord de l’express de 15h20 ...
-            </h6>
+            </p>
         </div>
         <div class="row">
-            <h6 class="text-center textBlog"> A suivre ! </h6>
+            <p class="text-center textBlog"> A suivre ! </p>
         </div>
-    </section>
+    </div>
     <!--******** PRESENTATION POST LIST  ********-->
-    <section class="container" id="listPostBlog">
-        <hr>
+    <div class="container" id="listPostBlog">
         <?php
         while ($article = $posts->fetch()) { ?>
             <article class="posts">
@@ -37,10 +36,8 @@
                 <p class="text-justify textBlog"> <?= substr($article["content"], 0, 255) . " ... " ?> </p>
                 <a href="index.php?action=post&amp;id=<?= $article['id'] ?>" class="nav-link bouton"> Lire la suite </a>
             </article>
-        <?php }
-        $posts->closeCursor();
-        ?>
-    </section>
+        <?php } ?>
+    </div>
 
     <?php include("./view/includes/footer.php") ?>
 </div>

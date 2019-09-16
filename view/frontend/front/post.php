@@ -11,18 +11,18 @@
         <h1 class="titleBlog"> <span id="novelTitle"> Billet simple pour l'Alaska </span></h1>
         <h2 class="titleBlog"> <?= htmlspecialchars($post["title"]); ?> </h2>
     </header>
-    <!--******** PRESENTATION OF POST CLICK ********-->
-    <section class="container" id="presentationPost">
+    <!--******** PRESENTATION CLICK POST ********-->
+    <div class="container" id="presentationPost">
         <div class="row">
-            <article class="post">
+            <div class="post text-justify textBlog">
                 <h5 class="datePublie"> Publié le <?= $post["creation_date_fr"]; ?> </h5>
-                <p class="text-justify textBlog"> <?= $post["content"]; ?> </p>
-            </article>
+                <?= $post["content"]; ?>
+            </div>
         </div>
-    </section>
+    </div>
     <!--******** POSTER COMMENTS ********-->
     <?php if (isset($_SESSION['userId']) == true) { ?>
-        <section class="col-lg-8 offset-lg-2" id="postComments">
+        <div class="col-lg-8 offset-lg-2" id="postComments">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3> Laissez un commentaire </h3>
@@ -65,17 +65,18 @@
                         </form>
                     </div>
                 </div>
-        </section>
+            </div>
+        </div>
     <?php } ?>
     <!--******** PRESENTATION COMMENTS ********-->
-    <section class="col-lg-8 offset-lg-2" id="comments">
+    <div class="col-lg-8 offset-lg-2" id="comments">
         <div class="col-lg-12 text-center">
             <h3> Commentaires </h3>
         </div>
         <?php
         while ($comment = $comments->fetch()) {
             ?>
-            <article class="col-lg-10 offset-lg-1" id="commentsArticle">
+            <div class="col-lg-10 offset-lg-1 commentsArticle">
                 <div class="row">
                     <div class="col-lg-3">
                         <p class="commentsPseudo"> <?= htmlspecialchars($comment["pseudo"]); ?> </p>
@@ -95,7 +96,7 @@
                 <form action="index.php?action=signalComment" method="post">
                     <div class="row">
                         <div class="col-lg-5" style="visibility:hidden">
-                            <input id="idPost" type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
+                            <input type="text" name="idPost" class="formInput" value="<?= $_GET['id']; ?>">
                         </div>
                         <div class="col-lg-5" style="visibility:hidden">
                             <input name="idSignal" value="<?= $comment["id"] ?>">
@@ -105,50 +106,51 @@
                         </div>
                     </div>
                 </form>
-            <?php } ?>
-            </article>
+            </div>
         <?php } ?>
-        <div class="row pagination">
+    </div>
+<?php } ?>
+<div class="row pagination">
+    <div class="col-lg-12 text-center">
+        <p> Page :
+            <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
+            {
+                //On va faire notre condition
+                if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
+                { ?>
+                    [ <?= $i ?> ]
+                <?php } else //Sinon...
+                    { ?>
+                    <a href="index.php?action=post&id=<?= $_GET['id']; ?>&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
+            <?php }
+            } ?>
+        </p>
+    </div>
+</div>
+</div>
+
+<!--******** REGISTRATION IF NOT CONNECTED ********-->
+<?php if (isset($_SESSION['userId']) != true) { ?>
+    <section class="col-lg-8 offset-lg-2" id="postComments">
+        <div class="row">
             <div class="col-lg-12 text-center">
-                <p> Page :
-                    <?php for ($i = 1; $i <= $nombreDePages; $i++) //On fait notre boucle
-                    {
-                        //On va faire notre condition
-                        if ($i == $pageActuelle) //Si il s'agit de la page actuelle...
-                        { ?>
-                            [ <?= $i ?> ]
-                        <?php } else //Sinon...
-                            { ?>
-                            <a href="index.php?action=post&id=<?= $_GET['id']; ?>&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
-                    <?php }
-                    } ?>
-                </p>
+                <h3> Laisser un commentaire </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1" id="writeComments">
+                <div class="col-lg-12 text-center">
+                    <p> <a href="index.php?action=login">Connectez vous</a> ou <a href="index.php?action=inscription"> inscrivez vous</a> pour poster des
+                        commentaires
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-
-    <!--******** REGISTRATION IF NOT CONNECTED ********-->
-    <?php if (isset($_SESSION['userId']) != true) { ?>
-        <section class="col-lg-8 offset-lg-2" id="postComments">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h3> Laisser un commentaire </h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1" id="writeComments">
-                    <div class="col-lg-12 text-center">
-                        <p> <a href="index.php?action=login">Connectez vous</a> ou <a href="index.php?action=inscription"> inscrivez vous</a> pour poster des
-                            commentaires
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <?php } ?>
-    <!--******** FOOTER ********-->
-    <?php include("./view/includes/footer.php") ?>
-    <!--Fin div blocPage-->
+<?php } ?>
+<!--******** FOOTER ********-->
+<?php include("./view/includes/footer.php") ?>
+<!--Fin div blocPage-->
 </div>
 
 <?php $content = ob_get_clean(); ?>

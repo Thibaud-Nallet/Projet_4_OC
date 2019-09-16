@@ -18,7 +18,7 @@ $title = "Article | Billet simple pour l'Alaska";
             }
             ?>
         </div>
-        <form action="" method="post">
+        <form action="#" method="post">
             <div class="col-lg-8 offset-lg-2">
                 <label class="labelForm" for="inputPseudo"> Pseudo </label>
                 <input type="text" class="formInput" id="inputPseudo" name="inputPseudo" value="<?php if (isset($_POST['inputPseudo'])) {

@@ -336,7 +336,7 @@ footer li a :hover {
     margin-top: 40px;
 }
 
-#commentsArticle {
+.commentsArticle {
     background-color: #e0e8ed;
     padding: 20px;
     margin: 20px auto;
@@ -474,6 +474,15 @@ footer li a :hover {
     padding: 100px 0;
 }
 
+.butt {
+    background-color: #d1b025;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    width: 180px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #e0e8ed;
+}
 
 
 /********** CONNECTION.HTML **********/

@@ -17,7 +17,7 @@
                     <p> La page que vous souhaitez voir n'existe pas.<br />
                     </p>
                     <div class="col-lg-12 text-center" id="buttonConnect">
-                        <button class="submit"> <a href="index.php?action=welcomeHome"> ACCUEIL </a> </button>
+                     <a class="butt" href="index.php?action=welcomeHome"> ACCUEIL </a> 
                     </div>
                 </div>
             </div>

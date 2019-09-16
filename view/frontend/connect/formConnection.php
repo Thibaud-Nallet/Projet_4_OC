@@ -16,7 +16,7 @@
             }
             ?>
         </div>
-        <form action="" method="post">
+        <form action="#" method="post">
             <div class="col-lg-10 offset-lg-1">
                 <label class="labelForm" for="mailConnect"> Identifiant </label>
                 <input type="email" class="formInput" id="mailConnect" name="mailConnect" placeholder="Votre adresse e-mail" value="<?php if (isset($_POST’["mailConnect"])) {
