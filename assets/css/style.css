@@ -265,6 +265,11 @@ footer li a :hover {
     background-color: #e0e8ed;
 }
 
+#presentationRoman h6 {
+    font-size: 18px;
+}
+
+
 #listPostBlog {
     background-color: #e0e8ed;
     padding: 20px 40px;
@@ -287,17 +292,20 @@ footer li a :hover {
     font-style: italic;
 }
 
-.posts button {
+.posts .bouton {
     background-color: #d1b025;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    width: 170px;
+    padding: 10px;
+    text-align: center;
 }
 
-.posts button a {
+.posts a {
     color: #e0e8ed;
 }
 
-.posts button a:hover {
+.posts a:hover {
     color: #18202d;
 }
 
@@ -585,7 +593,7 @@ footer li a :hover {
 #signalComments {
     border: 5px groove rgba(220, 20, 60);
     color: #18202d;
-     margin: 20px auto;
+    margin: 20px auto;
 }
 
 .effetArticle {

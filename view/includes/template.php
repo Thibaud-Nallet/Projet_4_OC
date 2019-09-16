@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!--***** TITLE *****-->
     <title> <?= $title ?> </title>
-    
+
 </head>
 
 <body>
@@ -33,7 +33,8 @@
 
 <!--***** SCRIPT *****-->
 <!-- Script Material Design -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
 <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
 </script>
 <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
@@ -46,8 +47,7 @@
 <script src='https://cdn.tiny.cloud/1/b8x3q3ok9xunrv08y5thgsudar2lodb9fn6to6dz8pprgn5f/tinymce/5/tinymce.min.js'></script>
 <script>
     tinymce.init({
-        selector: '#mytextarea',
-        language: 'fr',
+        selector: '#mytextarea'
     });
 </script>
 <!-- File js -->

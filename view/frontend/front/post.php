@@ -56,7 +56,6 @@
                                                 echo "Touche pas à mon URL";
                                             }
                                         }
-
                                         ?>
                                 </div>
                                 <div class="col-lg-12 text-center" id="buttonConnect">
@@ -102,7 +101,7 @@
                             <input name="idSignal" value="<?= $comment["id"] ?>">
                         </div>
                         <div class="col-lg-2 conteneurSignale">
-                            <button class=" signale"> Signalé </button>
+                            <button class="signale"> Signalé </button>
                         </div>
                     </div>
                 </form>
@@ -120,7 +119,7 @@
                             [ <?= $i ?> ]
                         <?php } else //Sinon...
                             { ?>
-                            <a href="index.php?action=post&id=<?= $_GET['id'];?>&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
+                            <a href="index.php?action=post&id=<?= $_GET['id']; ?>&page=<?= $i ?>"> <span class="text-white"> <?= $i ?> </span></a>
                     <?php }
                     } ?>
                 </p>

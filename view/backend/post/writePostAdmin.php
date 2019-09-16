@@ -3,6 +3,7 @@
 <?php ob_start(); ?>
 
 <?php include("./view/includes/navigation.php"); ?>
+
 <!--******** WRITE ARTICLE ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
 <section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
@@ -25,7 +26,7 @@
             <br />
             <div class="row">
                 <div class="col-md-10 offset-md-1">
-                    <label for="input_Content"> Votre article </label>
+                    <label> Votre article </label>
                     <textarea id="mytextarea" name="input_Content" class="formInput" rows="20"> </textarea>
                 </div>
             </div>
