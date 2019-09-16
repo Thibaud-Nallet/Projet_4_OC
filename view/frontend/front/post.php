@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1" id="writeComments">
                     <div class="col-lg-12">
-                        <form method="post" action="index.php?action=newComment" id="formComment">
+                        <form method="post" action="index.php?action=newComment#formComment" id="formComment">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="pseudoComment" class="labelForm"> Votre pseudo <span class="etoileNoir">*</span></label>
@@ -59,7 +59,7 @@
                                         ?>
                                 </div>
                                 <div class="col-lg-12 text-center" id="buttonConnect">
-                                    <button class="submit" name="formComment" href="#formComment"> Envoyez </button>
+                                    <button class="submit" name="formComment"> Envoyez </button>
                                 </div>
                             </div>
                         </form>

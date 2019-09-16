@@ -13,24 +13,33 @@
     </p>
     <div class="row">
         <div class="col-md-4">
-            <div class="col-lg-8 offset-lg-2" id="blockAdmin">
-                <p> Liste d'articles <br />
-                    <hr>
-                    <a href="index.php?action=listPostAdmin"><i class="fas fa-list-ul fa-2x"></i> </a> </p>
+            <div class="col-lg-8 offset-lg-2 blockAdmin">
+                <p> Liste d'articles </p>
+                <hr>
+
+                <a href="index.php?action=listPostAdmin">
+                    <i class="fas fa-list-ul fa-2x"></i>
+                </a>
+
             </div>
         </div>
         <div class="col-md-4">
-            <div class="col-lg-8 offset-lg-2" id="blockAdmin">
-                <p> Rédiger un article <br />
-                    <hr>
-                    <a href="index.php?action=writePostAdmin"><i class="fas fa-pen-nib fa-2x"></i> </a> </p>
+            <div class="col-lg-8 offset-lg-2 blockAdmin">
+                <p> Rédiger un article </p>
+                <hr>
+                <a href="index.php?action=writePostAdmin">
+                    <i class="fas fa-pen-nib fa-2x"></i>
+                </a>
+
             </div>
         </div>
         <div class="col-md-4">
-            <div class="col-lg-8 offset-lg-2" id="blockAdmin">
-                <p> Gérer les commentaires <br />
-                    <hr>
-                    <a href="index.php?action=listCommentsAdmin"><i class="far fa-comments fa-2x"></i> </a> </p>
+            <div class="col-lg-8 offset-lg-2 blockAdmin">
+                <p> Gérer les commentaires </p>
+                <hr>
+                <a href="index.php?action=listCommentsAdmin">
+                    <i class="far fa-comments fa-2x"></i>
+                </a>
             </div>
         </div>
     </div>

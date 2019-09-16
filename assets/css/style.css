@@ -479,11 +479,10 @@ footer li a :hover {
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     width: 180px;
-    padding: 10px;
+    padding: 10px 10px;
     text-align: center;
-    border: 2px solid #e0e8ed;
+    border: 5px solid #e0e8ed;
 }
-
 
 /********** CONNECTION.HTML **********/
 #connect {
@@ -554,26 +553,26 @@ footer li a :hover {
     color: #e0e8ed;
 }
 
-#blockAdmin {
+.blockAdmin {
     margin-top: 30px;
     background-color: #d1b025;
     border-radius: 50%;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-#blockAdmin p {
+.blockAdmin p {
     padding-top: 70px;
     font-size: 11px;
 }
 
-#blockAdmin .far,
-#blockAdmin .fas {
+.blockAdmin .far,
+.blockAdmin .fas {
     color: #18202d;
-    padding: 0px 0 10px 0;
+    padding-bottom: 75px;
 }
 
-#blockAdmin .far:hover,
-#blockAdmin .fas:hover {
+.blockAdmin .far:hover,
+.blockAdmin .fas:hover {
     color: #e0e8ed;
 }
 
@@ -589,17 +588,17 @@ footer li a :hover {
 }
 
 /********** INTERFACE ADMIN : LISTE DES ARTICLES **********/
-#ligneArticle {
+.ligneArticle {
     padding: 30px 10px 20px 10px;
 }
 
-#gestionArticle {
+.gestionArticle {
     border: 5px ridge #d1b025;
     background-color: #e0e8ed;
     margin: 20px auto;
 }
 
-#signalComments {
+.signalComments {
     border: 5px groove rgba(220, 20, 60);
     color: #18202d;
     margin: 20px auto;
@@ -666,7 +665,7 @@ footer li a :hover {
     color: #d1b025;
 }
 
-#editArticle {
+.editArticle {
     background-color: #e0e8ed;
     margin: 20px auto;
     padding-top: 20px;

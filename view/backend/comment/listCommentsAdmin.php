@@ -6,10 +6,10 @@
 
 <!--******** ADMIN INTERFACE ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
-<section class="col-md-12" id="interfaceAdmin" id="test">
+<section class="col-md-12" id="interfaceAdmin">
     <h2> Liste des commentaires </h2>
-    <article id="gestionArticle">
-        <div class="row" id="ligneArticle">
+    <div class="gestionArticle">
+        <div class="row ligneArticle">
             <div class="col-md-2 effetArticle">
                 <p> Titre </p>
             </div>
@@ -26,12 +26,12 @@
                 <p> Supprimer </p>
             </div>
         </div>
-    </article>
+    </div>
     <?php
     while ($comments = $pseudoCommentAdmin->fetch()) {
         if ($comments['alert'] ==  1) {  ?>
-            <article class="signalComments" id="signalComments">
-                <div class="row" id="ligneArticle">
+            <div class="signalComments">
+                <div class="row ligneArticle">
                     <div class="col-md-2 effetArticle">
                         <p> <?= htmlspecialchars($comments['title']); ?> </p>
                     </div>
@@ -48,11 +48,11 @@
                         <a href="index.php?action=deleteComments&amp;id=<?= $comments["id"] ?>"><i class=" far fa-eye-slash fa-2x effetIcone"></i> </a>
                     </div>
                 </div>
-            </article>
+            </div>
         <?php } else { ?>
-            <article id="gestionArticle">
-                <div class="row" id="ligneArticle">
-                    <div class="col-md-2  effetArticle">
+            <div class="gestionArticle">
+                <div class="row ligneArticle">
+                    <div class="col-md-2 effetArticle">
                         <p> <?= htmlspecialchars($comments['title']); ?> </p>
                     </div>
                     <div class="col-md-2 effetArticle">
@@ -65,7 +65,7 @@
                         <p> <?= htmlspecialchars($comments['content']); ?></p>
                     </div>
                 </div>
-            </article>
+            </div>
     <?php }
     } ?>
     <div class="row pagination">

@@ -12,11 +12,11 @@
         <br />
         <p> Vous avez séléctionné l'article : <span class="yellow"><?= htmlspecialchars($postAdmin["title"]); ?> </span> </p>
         <p class="alert alert-warning"> Etes vous certain de vouloir supprimer cet article ? </p>
-        <form action="" method="post">
+        <form action="#" method="post">
             <input type="hidden" name="deleteId" value="<?= $postAdmin["id"] ?>">
             <div class="row">
-                <button class="submitYellow" name=""> <a href="index.php?action=delete&amp;id=<?= $postAdmin["id"] ?>" class="nav-link"> Oui </a> </button>
-                <button class="submitYellow" name=""> <a href="index.php?action=listPostAdmin" class="nav-link"> Non </a> </button>
+                <a href="index.php?action=delete&amp;id=<?= $postAdmin["id"] ?>" class="nav-link submitYellow text-center"> Oui </a>
+                <a href="index.php?action=listPostAdmin" class="nav-link submitYellow text-center"> Non </a>
             </div>
         </form>
     </div>

@@ -6,10 +6,10 @@
 
 <!--******** WRITE ARTICLE ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
-<section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
+<section class="col-md-10 offset-md-1" id="interfaceAdmin">
     <h2> Ecrivez un article </h2>
-    <div class="col-md-10 offset-md-1 text-left" id="editArticle">
-        <form action="" method="post">
+    <div class="col-md-10 offset-md-1 text-left editArticle">
+        <form action="#" method="post">
             <div class="error text-center">
                 <?php
                 if (isset($erreur)) {

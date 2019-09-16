@@ -5,10 +5,10 @@
 <?php include("./view/includes/navigation.php"); ?>
 <!--******** POST ********-->
 <p class="comeBack"> Revenir à l'écran de gestion <a href="index.php?action=comeBackProfilAdmin"><i class="far fa-times-circle fa-lg"></i> </a> </p>
-<section class="col-md-10 offset-md-1" id="interfaceAdmin" id="test">
+<section class="col-md-10 offset-md-1" id="interfaceAdmin">
     <h2> Liste des articles </h2>
-    <article id="gestionArticle">
-        <div class="row" id="ligneArticle">
+    <div class="gestionArticle">
+        <div class="row ligneArticle">
             <div class="col-md-1 offset-md-1 effetArticle">
                 <p> Id </p>
             </div>
@@ -28,11 +28,12 @@
                 <p> Supprimer </p>
             </div>
         </div>
-    </article>
+    </div>
     <?php
-    while ($article = $postsAdmin->fetch()) { ?>
-        <article id="gestionArticle">
-            <div class="row" id="ligneArticle">
+    while ($article = $postsAdmin->fetch()) {
+        ?>
+        <div class="gestionArticle">
+            <div class="row ligneArticle">
                 <div class="col-md-1 offset-md-1 effetArticle">
                     <p> <?= htmlspecialchars($article["id"]); ?> </p>
                 </div>
@@ -52,7 +53,7 @@
                     <a href="index.php?action=deletePostAdmin&amp;id=<?= $article['id'] ?>"><i class="far fa-trash-alt fa-2x effetIcone"></i> </a>
                 </div>
             </div>
-        </article>
+        </div>
     <?php } ?>
 </section>
 
